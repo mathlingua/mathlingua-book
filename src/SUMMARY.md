@@ -62,7 +62,3 @@
 
 # Checking Documents
 - [Overview]()
-
-# All Features
-
-- [All Features](./all_features.md)
