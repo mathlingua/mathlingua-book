@@ -199,3 +199,15 @@
   * explain how `<adjective>.<noun>:<property>(<topic>)` is a good approach
     (i.e. `\continuous.function:inMetricSpace{S}`)
 
+
+---------------------------------------
+
+```
+\real.integral[x]{x^2}@d[x] := \real.function[x]{x^3/3} + C
+```
+
+
+
+
+
+

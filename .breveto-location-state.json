@@ -1,0 +1,226 @@
+{
+  "metadata" : {
+    "src/type_system" : {
+      "rank" : {
+        "value" : "0|i0001r:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/language/structural_language/results" : {
+      "rank" : {
+        "value" : "0|i0000n:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/language" : {
+      "rank" : {
+        "value" : "0|i0000v:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/language/structural_language/definitions" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/language/structural_language/common_items" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/command_line_tool" : {
+      "rank" : {
+        "value" : "0|i0000n:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "theme" : {
+      "rank" : {
+        "value" : "0|i0000v:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/language/formulation_language" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/language/structural_language" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/rendering" : {
+      "rank" : {
+        "value" : "0|i00013:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/symbol_resolution" : {
+      "rank" : {
+        "value" : "0|i0001b:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/rendering" : {
+      "rank" : {
+        "value" : "0|i0001r:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "theme/fonts" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/language/structural_language/definitions" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/checking_documents" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/type_system" : {
+      "rank" : {
+        "value" : "0|i0002f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "theme/css" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/language/structural_language/results" : {
+      "rank" : {
+        "value" : "0|i0000n:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/language/structural_language/common_items" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src" : {
+      "rank" : {
+        "value" : "0|i0000n:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/language/formulation_language" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/FontAwesome" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/temp" : {
+      "rank" : {
+        "value" : "0|i00027:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/introduction" : {
+      "rank" : {
+        "value" : "0|i0000n:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/language" : {
+      "rank" : {
+        "value" : "0|i0001j:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/introduction" : {
+      "rank" : {
+        "value" : "0|i0001b:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/language/structural_language" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "Makefile" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/fonts" : {
+      "rank" : {
+        "value" : "0|i00013:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/temp" : {
+      "rank" : {
+        "value" : "0|i0001j:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/FontAwesome/fonts" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/css" : {
+      "rank" : {
+        "value" : "0|i0000v:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/symbol_resolution" : {
+      "rank" : {
+        "value" : "0|i0001z:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "docs/FontAwesome/css" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/command_line_tool" : {
+      "rank" : {
+        "value" : "0|i0000f:",
+        "updatedAt" : 1691472698.613076
+      }
+    },
+    "src/checking_documents" : {
+      "rank" : {
+        "value" : "0|i00007:",
+        "updatedAt" : 1691472698.613076
+      }
+    }
+  }
+}
