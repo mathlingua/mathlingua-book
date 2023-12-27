@@ -1,10 +1,10 @@
 # Types
 
-
-```yaml
-\:a.b.c:x{\:a & \:b, \:c}:y{\:d}
-\:continuous.function:on{\:set}:to{\:set}
-(\:set & \:group) \:to:/ \:set
-\:set \:to:/ \:set
-```
-
+<__main__.Line object at 0x10104ff50>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>

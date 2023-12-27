@@ -1,27 +1,19 @@
 # Terminating Constructs
 
-
-TODO: ADD THIS
-
-```yaml
-absurd:
-```
-
-TODO: ADD THIS
-
-```yaml
-contradiction:
-```
-
-TODO: ADD THIS
-
-```yaml
-done:
-```
-
-TODO: ADD THIS
-
-```yaml
-qed:
-```
-
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>

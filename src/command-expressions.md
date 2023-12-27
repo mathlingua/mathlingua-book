@@ -1,11 +1,11 @@
 # Command Expressions
 
-
-```yaml
-\function:on{A}:to{B}
-\a.b.c{x, y}
-\a.b.c(x, y)
-\a.b.c[x, y]{x + y}
-\a.b.c[x, y]{x + y | x > 0 ; y < 0}
-```
-
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>

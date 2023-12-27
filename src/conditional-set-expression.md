@@ -1,8 +1,8 @@
 # Conditional Set Expression
 
-
-```yaml
-[x]{(x, x+1) | x is \real ; x > 0}
-[x, y]{(x + y | x is \real ; y > 0}
-```
-
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>

@@ -1,8 +1,8 @@
 # Ordinal Call Expression
 
-
-```yaml
-x[1]
-x[i[k]]
-```
-
+<__main__.Line object at 0x10104fe10>
+<__main__.Line object at 0x10104fe10>
+<__main__.Line object at 0x10104fe10>
+<__main__.Line object at 0x10104fe10>
+<__main__.Line object at 0x10104fe10>
+<__main__.Line object at 0x10104fe10>

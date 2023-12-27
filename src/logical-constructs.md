@@ -1,33 +1,33 @@
 # Logical Constructs
 
-
-```yaml
-oneOf: <ProofItemKind>+
-```
-
-```yaml
-allOf: <ProofItemKind>+
-```
-
-```yaml
-anyOf: <ProofItemKind>+
-```
-
-```yaml
-equivalently: <ProofItemKind>+
-```
-
-```yaml
-if: <ProofItemKind>+
-then: <ProofItemKind>+
-```
-
-```yaml
-iff: <ProofItemKind>+
-then: <ProofItemKind>+
-```
-
-```yaml
-not: <ProofItemKind>
-```
-
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>

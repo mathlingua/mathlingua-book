@@ -1,7 +1,7 @@
 # Infix Command Expression
 
-
-```yaml
-\function:on{A}:to{B}/
-```
-
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>

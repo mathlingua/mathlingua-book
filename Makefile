@@ -5,7 +5,7 @@ serve:
 
 .PHONY: build
 build:
-	mdbook build --dest-dir docs
+	python3 generate-summary.py && mdbook build --dest-dir docs
 
 .PHONY: watch
 watch:

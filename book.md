@@ -1,3 +1,10 @@
+# Introduction
+
+## Overview
+
+The field of mathematics runs both broad and deep and it can be very difficult explore areas which one is not already familiar.
+
+To explore mathematics, one can either look through journals, books, and encylopedias.
 
 # Formulation Forms
 
@@ -775,20 +782,15 @@ ProofItemKind ::=
 block: <ProofItemKind>+
 ```
 
-TODO: Add this
-
 ```yaml
 remark: <text>
 ```
-
-TODO: Add this
 
 ```yaml
 partwise:
 part+: <ProofItemKind>+
 ```
 
-TODO: Add else?: section
 ```yaml
 casewise:
 case+: <ProofItemKind>+
@@ -803,19 +805,13 @@ stepwise: <ProofItemKind>+
 withoutLossOfGenerality: <ProofItemKind>+
 ```
 
-TODO: Update this
-
 ```yaml
 forContradiction: <ProofItemKind>+
 ```
 
-TODO: Update this
-
 ```yaml
 forInduction: <ProofItemKind>+
 ```
-
-TODO: Add this
 
 ```yaml
 forContrapositive: <ProofItemKind>+
@@ -839,13 +835,9 @@ suppose: <ProofItemKind>+
 then: <ProofItemKind>+
 ```
 
-TODO: Add this
-
 ```yaml
 sufficesToShow: <ProofItemKind>+
 ```
-
-TODO: Add this
 
 ```yaml
 toShow: <ProofItemKind>+
@@ -969,25 +961,17 @@ not: <ProofItemKind>
 
 ### Terminating Constructs
 
-TODO: ADD THIS
-
 ```yaml
 absurd:
 ```
-
-TODO: ADD THIS
 
 ```yaml
 contradiction:
 ```
 
-TODO: ADD THIS
-
 ```yaml
 done:
 ```
-
-TODO: ADD THIS
 
 ```yaml
 qed:
@@ -1007,9 +991,9 @@ qed:
 ## Overview
 
 ```yaml
-"target :> latex"
-"epsilon :> \varepsilon"
-"a(i) :> a?_{i?}"
+"target as latex"
+"epsilon as \varepsilon"
+"a(i) as a?_{i?}"
 ```
 writing: uses the same replacement rules as written:
 
@@ -1039,14 +1023,3 @@ x? is the same as x-?
 # Encoded As
 
 # Viewed As
-
-# To Delete
-
-## Overview
-
-TODO: REMOVE THIS
-
-```yaml
-independently:
-```
-

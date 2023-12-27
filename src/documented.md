@@ -1,27 +1,27 @@
 # Documented
 
-
-```yaml
-DocumentedKind ::=
-```
-
-```yaml
-overview: <Text>+
-```
-
-```yaml
-related: <Text>+
-```
-
-```yaml
-written: <Text>+
-```
-
-```yaml
-called: <Text>+
-```
-
-```yaml
-writing: <Text>+
-```
-
+<__main__.Line object at 0x10104fd50>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>

@@ -1,25 +1,25 @@
 # Provides
 
-
-```yaml
-symbol: <Alias>
-written?: <Text>+
-```
-
-```yaml
-view:
-as: <Target>
-using?: <Target>+
-where?: <Spec>+
-through?: <Formulation>
-signifies?: <Formulation>
-```
-
-```yaml
-encoding:
-as: <Target>
-using?: <Target>+
-where?: <Spec>+
-through?: <Formulation>
-```
-
+<__main__.Line object at 0x10104fdd0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>
+<__main__.Line object at 0x10104fed0>

@@ -1,8 +1,8 @@
 # Functional Literal
 
-
-```yaml
-x => f(x)
-(x, y) => f(x, y)
-```
-
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>

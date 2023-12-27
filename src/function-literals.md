@@ -1,8 +1,8 @@
 # Function Literals
 
-
-```yaml
-x => x + 1
-(x, y) => x + y
-```
-
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>
+<__main__.Line object at 0x10104ffd0>

@@ -1,7 +1,7 @@
 # Extends Expression
 
-
-```yaml
-x extends \y
-```
-
+<__main__.Line object at 0x10104fdd0>
+<__main__.Line object at 0x10104fdd0>
+<__main__.Line object at 0x10104fdd0>
+<__main__.Line object at 0x10104fdd0>
+<__main__.Line object at 0x10104fdd0>

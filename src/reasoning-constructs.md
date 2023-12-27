@@ -1,14 +1,14 @@
 # Reasoning Constructs
 
-
-```yaml
-because: <ProofItemKind>+
-then: <ProofItemKind>+
-```
-
-```yaml
-by: <Text>+
-because?: <ProofItemKind>+
-then: <ProofItemKind>+
-```
-
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>
+<__main__.Line object at 0x10104ff10>

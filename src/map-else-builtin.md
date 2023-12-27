@@ -1,7 +1,7 @@
 # Map Else Builtin
 
-
-```yaml
-\\map{x[i[k]]}:to{x[i[k]] + 1}:else{0}
-```
-
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
+<__main__.Line object at 0x10104fd90>
