@@ -1,73 +1,96 @@
 # Summary
 
-# Introduction
+# Formulation Forms
+- [Names](./names.md)
+- [Functions](./functions.md)
+- [Infix Operators](./infix-operators.md)
+- [Prefix Operator](./prefix-operator.md)
+- [Suffix Operator](./suffix-operator.md)
+- [Tuples](./tuples.md)
+- [Conditional Sets](./conditional-sets.md)
+- [Functional Literal](./functional-literal.md)
+- [Conditional Set Id Form](./conditional-set-id-form.md)
+- [Colon Equals Form](./colon-equals-form.md)
 
-- [Overview](./introduction/overview.md)
-- [An Example](./introduction/an_example.md)
-- [Other Languages](./introduction/other_languages.md)
-- [Capturing All Knowledge](./introduction/capturing_all_knowledge.md)
+# Formulation Expressions
+- [Function Expression](./function-expression.md)
+- [Function Literals](./function-literals.md)
+- [Tuples](./tuples.md)
+- [Groupings](./groupings.md)
+- [Invisible Groupings](./invisible-groupings.md)
+- [Conditional Set Expression](./conditional-set-expression.md)
+- [Command Expressions](./command-expressions.md)
+- [Prefix Operator](./prefix-operator.md)
+- [Postfix Operator](./postfix-operator.md)
+- [Infix Operator](./infix-operator.md)
+- [Is Expression](./is-expression.md)
+- [Equality](./equality.md)
+- [Extends Expression](./extends-expression.md)
+- [As Expression](./as-expression.md)
+- [Ordinal Call Expression](./ordinal-call-expression.md)
+- [Chain Expression](./chain-expression.md)
+- [Select From Builtin](./select-from-builtin.md)
+- [Signatures](./signatures.md)
+- [Types](./types.md)
+- [Type Builtin](./type-builtin.md)
+- [Formulation Builtin](./formulation-builtin.md)
+- [Map Builtin](./map-builtin.md)
+- [Map Else Builtin](./map-else-builtin.md)
+- [Colon Equals Expression](./colon-equals-expression.md)
+- [Colon Arrow Expression](./colon-arrow-expression.md)
+- [Colon Dash Arrow Expression](./colon-dash-arrow-expression.md)
+- [Enclosed Non-command Operator](./enclosed-non-command-operator.md)
+- [Non-enclosed Non-command Operator](./non-enclosed-non-command-operator.md)
+- [Infix Command Expression](./infix-command-expression.md)
 
-# Command Line Tool
+# Ids
+- [Command Id](./command-id.md)
+- [Prefix Operator Id](./prefix-operator-id.md)
+- [Postfix Operator Id](./postfix-operator-id.md)
+- [Infix Operator Id](./infix-operator-id.md)
+- [Infix Command Operator Id](./infix-command-operator-id.md)
+- [Variadic](./variadic.md)
 
-- [Introduction](./command_line_tool/introduction.md)
-- [Installation](./command_line_tool/installation.md)
-- [Project Structure](./command_line_tool/project_structure.md)
+# Structural Language
+- [Overview](./overview.md)
+- [Clauses](./clauses.md)
+- [Definitions](./definitions.md)
+- [Results](./results.md)
+- [Resources](./resources.md)
+- [Configuration](./configuration.md)
+- [People](./people.md)
+- [Documented](./documented.md)
+- [Provides](./provides.md)
+- [Justified](./justified.md)
+- [Proofs](./proofs.md)
+  - [Structuring Constructs](./structuring-constructs.md)
+  - [Introductory Constructs](./introductory-constructs.md)
+  - [Symbol Introduction Constructs](./symbol-introduction-constructs.md)
+  - [Reasoning Constructs](./reasoning-constructs.md)
+  - [Flow of Thought Constructs](./flow-of-thought-constructs.md)
+  - [Logical Constructs](./logical-constructs.md)
+  - [Terminating Constructs](./terminating-constructs.md)
 
-# The Language
-- [Overview](./language/overview.md)
-- [Signatures](./language/signatures.md)
-- [Formulation Language](./language/formulation_language.md)
-  - [Forms](./language/formulation_language/forms.md)
-  - [Identifiers](./language/formulation_language/identifiers.md)
-  - [Tuples](./language/formulation_language/tuples.md)
-  - [Conditional Sets](./language/formulation_language/conditional_sets.md)
-  - [Mappings](./language/formulation_language/mappings.md)
-  - [Commands](./language/formulation_language/commands.md)
-  - [`is`, `as`, and `extends`](./language/formulation_language/is_as_extends.md)
-  - [:=, :->, and :=>](./language/formulation_language/colon_equal_and_arrows.md)
-  - [Literals](./language/formulation_language/literals.md)
-  - [Variable Shadowing](./language/formulation_language/variable_shadowing.md)
-  - [Operators](./language/formulation_language/operators.md)
-  - [Meta Types](./language/formulation_language/meta_types.md)
-- [Structural Langauge](./language/structural_language.md)
-  - [Overview](./language/structural_language/overview.md)
-  - [Arguments](./language/structural_language/arguments.md)
-  - [Building Blocks](./language/structural_language/building_blocks.md)
-  - [Common Items](./language/structural_language/common_items.md)
-    - [Labels](./language/structural_language/common_items/labels.md)
-    - [Aliases](./language/structural_language/common_items/aliases.md)
-    - [Provides](./language/structural_language/common_items/provides.md)
-    - [Documented](./language/structural_language/common_items/documented.md)
-    - [References](./language/structural_language/common_items/references.md)
-    - [Metadata](./language/structural_language/common_items/metadata.md)
-  - [Definitions](./language/structural_language/definitions.md)
-    - [Declares](./language/structural_language/definitions/declares.md)
-    - [Defines](./language/structural_language/definitions/defines.md)
-    - [States](./language/structural_language/definitions/states.md)
-    - [Captures](./language/structural_language/definitions/captures.md)
-    - [Specify](./language/structural_language/definitions/specify.md)
-  - [Results](./language/structural_language/results.md)
-    - [Axioms](./language/structural_language/results/axioms.md)
-    - [Conjectures](./language/structural_language/results/conjectures.md)
-    - [Theorems](./language/structural_language/results/theorems.md)
-    - [Proof](./language/structural_language/results/proofs.md)
-    - [Lemmas](./language/structural_language/results/lemmas.md)
-    - [Conjectures](./language/structural_language/results/conjectures.md)
-  - [People](./language/structural_language/people.md)
-  - [Resources](./language/structural_language/resources.md)
+# Labels
+- [Overview](./overview.md)
 
-# Rendering Documents
-- [Overview](./rendering/overview.md)
+# Writing
+- [Overview](./overview.md)
 
-# Type System
-- [Overview](./type_system/overview.md)
+# Written
+- [Overview](./overview.md)
+
+# Sigils
+
+# Order of operations
+
+# Type checking
 
 # Symbol Resolution
-- [Overview](./symbol_resolution/overview.md)
 
-# Checking Documents
-- [Overview](./checking_documents/overview.md)
+# Encoded As
 
-# Status
+# Viewed As
 
-- [Status](./status.md)
+# To Delete
+- [Overview](./overview.md)
