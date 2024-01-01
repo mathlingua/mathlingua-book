@@ -2,9 +2,53 @@
 
 ## Overview
 
-The field of mathematics runs both broad and deep and it can be very difficult explore areas which one is not already familiar.
+Mathlingua is a language specially designed to create encyclopedias of mathematical knowledge.  That is, it is created with the unique needs for recording mathematical knowledge.  Examples of such unique needs are:
 
-To explore mathematics, one can either look through journals, books, and encylopedias.
+* that a Hilbert space extends the concept of a vector space with additional properties, and, although it is not directly a Banach space, it can be viewed as one
+* that an integer is, strictly speaking, *not* a real number, but it can be viewed as one
+* that in the expression $x + n$ where $x$ is a real number an $n$ is an integer, $+$ is interpreted as *real* addition because the integer $n$ is *viewed as* a real number
+* that a function can be though of abstractly as a standalone concept that is a mapping from an input to a unique output, but can also be *encoded* as a set of pairs, and thus thought of as a set if needed
+* that a continuous function is an abstract concept while the real-valued function $f(x) := \sin(x)$ is a concrete example of a continuous function on $\mathbb{R}$
+* that a group can be thought of as a *tuple* $G := (X, *, e)$, where a tuple-like object is different from a function like object, is different from a set-like object
+* that when one says $x \in G$ where $G := (X, *, e)$ with $X$ a set that one means $x \in X$
+* that $\int f$ can potentially represent the Riemann integral, Lebesgue integral, Daniel integral, etc. of a function $f$ and thus, math symbols can be ambiguous.  Mathlingua addresses this by separating the name defining a concept and how it is rendered.
+* that in the expression
+$$
+   \int_a^b f(x) \: dx
+$$
+the exact symbols $a$, $b$, and $f$ are important, but the symbol $x$ can be replaced with any symbol (other than $a$, $b$, or $f$) without changing the meaning of the expression.
+* that definitions and theorems expect certain types of mathematical objects as inputs.  That is, if a theorem says given a monoid $M$, one cannot use a continuous function $f$ for $M$ because a continuous function is not a monoid.  However, one could use a group $G$ because a group *is* a monoid.
+* that when one says $A \subset B$ for some sets $A$ and $B$ that it is implied that also $B \supset A$.
+* that in the expression $x + y * z$, where $x$, $y$, and $z$ are real numbers, the expression should be evaluated as $x + (y * z)$.
+* that to describe $f$ verbally one could say that $f$ is a function from $A$ to $B$, but in writing would write $f \: : \: A \rightarrow B$.
+* that if $G := (X, *, e)$ is a group and $x,y$ are elements of $G$ then the $*$ in $x * y$ refers to the $*$ in the tuple $(X, *, e)$.
+* that when specifying a definition, theorem, axiom, conjecture, or proof, to remove ambiguity, it is essential to allow the *type* of each symbol used be determined.  That is, do not just write $x + n$ but specify that $x$ is real and $n$ is an integer.
+* to fully record mathematical knowledge, it is important to not just record statements of definitions, theorems, etc. but also describe their history, importance, use, and how how they related to other math concepts
+* in addition to definitions, theorems, etc. it is important to record information about math resources such as books, articles, etc. as well as people that discovered mathematical results
+
+## The Need for a Recording Mathematics
+
+There are many examples in mathematics of concepts being rediscovered.  This could be from the fact that it is often times difficult to find what has already been discovered.  This is compounded by the observation that different authors can use very different nomenclature and notation for the same concepts.
+
+Further, as more and more mathematics is discovered, it is becoming harder and harder for any individual to follow everything new.  This is especially difficult since many discoveries may be in journals that are hard to search and require subscriptions, and thus are not accessible to most.
+
+As a result, a standard repository of all mathematics in a clear, consistent format is needed to help this and future generations discover and record mathematics.
+
+## Existing Math Collections
+
+Existing collections of mathematical knowledge typically fall into two categories.  First are books, articles, journals, encyclopedias, etc. while the second are collections written in theorem proving languages such as Lean, Coq, Mizar, etc.
+
+For the first category, different math concepts can be spread across different books or other resources.  Even for encyclopedias, nomenclature and notation can vary across the encyclopedia.
+
+Next, these resources are written in natural language, and are thus difficult for computers to search and understand.  That is, it is not easy to make computer search capabilities to search math books, journals, and encyclopedias and find, for example, all theorems that describe when a function is measurable.
+
+Further, mathematics written in natural language can be imprecise and difficult to read because statements can rely on context or conventions for information.  For example, a theorem might say for all $x$ and $y$ there exists an $n$ such that $x*n > y$, where it is up to the reader to infer, based on convention and the fact that the theorem is in a real analysis book, that $x$ and $y$ refer to real numbers and $n$ an integer.
+
+Last, mathematics written in natural language do not have any automated checking of any aspects of the statements.  In particular, a statement could have a typo in a symbol name, thus using a name that is not defined anywhere or refer to a definition that doesn't exist, and it is up to manual review to catch those mistakes.
+
+In the second category, 
+
+-----
 
 # Formulation Forms
 
@@ -781,6 +825,8 @@ ProofItemKind ::=
 ```yaml
 block: <ProofItemKind>+
 ```
+
+TODO: Add this
 
 ```yaml
 remark: <text>
