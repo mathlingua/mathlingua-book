@@ -1,0 +1,74 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Mathlingua</title>
+    <link rel="icon" type="image/png" href="./images/mlg-logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+    <style>
+      :root {
+        --base-font-family: georgia;
+        --code-font-family: "Courier Prime", monospace;
+        --sidebar-toggle-background: var(--sidebar-background);
+        --sidebar-toggle-border-style: solid;
+        --sidebar-toggle-border-color: var(--sidebar-border-color);
+        --sidebar-toggle-border-width: 0.1px;
+      }
+
+      h1, h2, h3 {
+        color: #005cc5 !important;
+      }
+
+      .lang-yaml {
+        color: black !important;
+      }
+
+      .token {
+        color: #005cc5 !important;
+      }
+
+      code {
+        border-style: solid;
+        border-color: color-mix(in srgb,var(--sidebar-border-color),#000 10%);
+        border-width: 0.1px;
+        border-radius: 4px;
+        background-color: var(--sidebar-background) !important;
+      }
+
+      .markdown-section pre[data-lang]::after {
+        content: '';
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      window.$docsify = {
+        name: 'Mathlingua',
+        repo: 'https://github.com/mathlingua/mathlingua',
+        homepage: 'index.md',
+        latex: {
+          inlineMath   : [['$', '$'], ['\\(', '\\)']], // default
+          displayMath  : [['$$', '$$']],               // default
+          customOptions: {}                            // default
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/docsify/lib/plugins/search.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inconsolata:wght@200..900&amp;display=swap" rel="stylesheet">
+
+    <!-- Docsify v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/docsify-latex@0"></script>
+  </body>
+</html>

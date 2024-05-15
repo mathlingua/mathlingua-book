@@ -1,7 +1,0 @@
-# Suffix Operator
-
-
-```yaml
-x!
-```
-

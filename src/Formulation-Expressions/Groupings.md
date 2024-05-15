@@ -1,7 +1,0 @@
-# Groupings
-
-
-```yaml
-(x + y)
-```
-

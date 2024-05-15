@@ -1,7 +1,0 @@
-# Prefix Operator
-
-
-```yaml
-+x
-```
-

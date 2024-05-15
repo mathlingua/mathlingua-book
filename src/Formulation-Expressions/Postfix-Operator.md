@@ -1,7 +1,0 @@
-# Postfix Operator
-
-
-```yaml
-x!
-```
-
