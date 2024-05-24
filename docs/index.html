@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="./images/mlg-logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="The Mathlingua documentation">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Mathlingua</title>
+    <link rel="stylesheet" href="./styles.css">
+
+    <script>
+      function openNav() {
+          document.getElementById("navPanel").style.width = "275px";
+          document.getElementById("navPanel").style.paddingRight = "10px";
+          document.getElementById("mainContent").style.paddingLeft = "300px";
+          document.getElementById("openNavBtn").style.display = "none";
+          document.getElementById("openNavBtn").style.marginLeft = "-2em";
+      }
+  
+      function closeNav() {
+          document.getElementById("navPanel").style.width = "0";
+          document.getElementById("navPanel").style.paddingRight = "0";
+          document.getElementById("mainContent").style.paddingLeft = "0";
+          document.getElementById("openNavBtn").style.display = "block";
+          setTimeout(() => {
+            document.getElementById("openNavBtn").style.marginLeft = "0";
+          }, 0.5*0.3*1000 /* sec */);
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        const navPanel = document.getElementById('navPanel');
+        if (!navPanel) {
+          return;
+        }
+        const anchors = navPanel.getElementsByTagName('a');
+        for (let i=0; i<anchors.length; i++) {
+          const target = anchors[i];
+          target.onclick = () => {
+            const navPanel = document.getElementById('navPanel');
+            if (!navPanel) {
+              return;
+            }
+            const anchors = navPanel.getElementsByTagName('a');
+            for (let i=0; i<anchors.length; i++) {
+              const a = anchors[i];
+              a.classList.remove('selected');
+            }
+            target.classList.add('selected');
+
+            if (window.innerWidth <= 600) {
+              closeNav();
+            }
+          };
+        }
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+                  {left: '\\(', right: '\\)', display: false},
+                  {left: '\\[', right: '\\]', display: true}
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false,
+            });
+        });
+    </script>
+  </head>
+  <body>
+    <nav id="navPanel">
+      <button class="closeBtn" onclick="closeNav()">&times;</button>
+      <ul>
+      <li><a href="#introduction"
+      id="toc-introduction">Introduction</a></li>
+      <li><a href="#the-need-for-a-recording-mathematics"
+      id="toc-the-need-for-a-recording-mathematics">The Need for a
+      Recording Mathematics</a></li>
+      <li><a href="#existing-math-collections"
+      id="toc-existing-math-collections">Existing Math
+      Collections</a></li>
+      <li><a href="#formulation-forms"
+      id="toc-formulation-forms">Formulation Forms</a>
+      <ul>
+      <li><a href="#names" id="toc-names">Names</a></li>
+      <li><a href="#functions" id="toc-functions">Functions</a></li>
+      <li><a href="#infix-operators" id="toc-infix-operators">Infix
+      Operators</a></li>
+      <li><a href="#prefix-operator" id="toc-prefix-operator">Prefix
+      Operator</a></li>
+      <li><a href="#suffix-operator" id="toc-suffix-operator">Suffix
+      Operator</a></li>
+      <li><a href="#tuples" id="toc-tuples">Tuples</a></li>
+      <li><a href="#conditional-sets"
+      id="toc-conditional-sets">Conditional Sets</a></li>
+      <li><a href="#functional-literal"
+      id="toc-functional-literal">Functional Literal</a></li>
+      <li><a href="#conditional-set-id-form"
+      id="toc-conditional-set-id-form">Conditional Set Id Form</a></li>
+      <li><a href="#colon-equals-form" id="toc-colon-equals-form">Colon
+      Equals Form</a></li>
+      </ul></li>
+      <li><a href="#formulation-expressions"
+      id="toc-formulation-expressions">Formulation Expressions</a>
+      <ul>
+      <li><a href="#function-expression"
+      id="toc-function-expression">Function Expression</a></li>
+      <li><a href="#function-literals"
+      id="toc-function-literals">Function Literals</a></li>
+      <li><a href="#tuples-1" id="toc-tuples-1">Tuples</a></li>
+      <li><a href="#groupings" id="toc-groupings">Groupings</a></li>
+      <li><a href="#invisible-groupings"
+      id="toc-invisible-groupings">Invisible Groupings</a></li>
+      <li><a href="#conditional-set-expression"
+      id="toc-conditional-set-expression">Conditional Set
+      Expression</a></li>
+      <li><a href="#command-expressions"
+      id="toc-command-expressions">Command Expressions</a></li>
+      <li><a href="#prefix-operator-1" id="toc-prefix-operator-1">Prefix
+      Operator</a></li>
+      <li><a href="#postfix-operator" id="toc-postfix-operator">Postfix
+      Operator</a></li>
+      <li><a href="#infix-operator" id="toc-infix-operator">Infix
+      Operator</a></li>
+      <li><a href="#is-expression" id="toc-is-expression">Is
+      Expression</a></li>
+      <li><a href="#also-expression" id="toc-also-expression">Also
+      Expression</a></li>
+      <li><a href="#equality" id="toc-equality">Equality</a></li>
+      <li><a href="#extends-expression"
+      id="toc-extends-expression">Extends Expression</a></li>
+      <li><a href="#as-expression" id="toc-as-expression">As
+      Expression</a>
+      <ul>
+      <li><a href="#implicit-conversions"
+      id="toc-implicit-conversions">Implicit Conversions</a></li>
+      </ul></li>
+      <li><a href="#ordinal-call-expression"
+      id="toc-ordinal-call-expression">Ordinal Call Expression</a></li>
+      <li><a href="#chain-expression" id="toc-chain-expression">Chain
+      Expression</a></li>
+      <li><a href="#select-from-builtin"
+      id="toc-select-from-builtin">Select From Builtin</a></li>
+      <li><a href="#signatures" id="toc-signatures">Signatures</a></li>
+      <li><a href="#types" id="toc-types">Types</a></li>
+      <li><a href="#type-builtin" id="toc-type-builtin">Type
+      Builtin</a></li>
+      <li><a href="#formulation-builtin"
+      id="toc-formulation-builtin">Formulation Builtin</a></li>
+      <li><a href="#boolean-builtin" id="toc-boolean-builtin">Boolean
+      Builtin</a></li>
+      <li><a href="#boolean-value-builtin"
+      id="toc-boolean-value-builtin">Boolean Value Builtin</a></li>
+      <li><a href="#type-of-builtin" id="toc-type-of-builtin">Type-of
+      Builtin</a></li>
+      <li><a href="#map-builtin" id="toc-map-builtin">Map
+      Builtin</a></li>
+      <li><a href="#map-else-builtin" id="toc-map-else-builtin">Map Else
+      Builtin</a></li>
+      <li><a href="#definition-of-builtins"
+      id="toc-definition-of-builtins">Definition Of Builtins</a></li>
+      <li><a href="#colon-equals-expression"
+      id="toc-colon-equals-expression">Colon Equals Expression</a></li>
+      <li><a href="#colon-arrow-expression"
+      id="toc-colon-arrow-expression">Colon Arrow Expression</a></li>
+      <li><a href="#colon-dash-arrow-expression"
+      id="toc-colon-dash-arrow-expression">Colon Dash Arrow
+      Expression</a></li>
+      <li><a href="#enclosed-non-command-operator"
+      id="toc-enclosed-non-command-operator">Enclosed Non-command
+      Operator</a></li>
+      <li><a href="#non-enclosed-non-command-operator"
+      id="toc-non-enclosed-non-command-operator">Non-enclosed
+      Non-command Operator</a></li>
+      <li><a href="#infix-command-expression"
+      id="toc-infix-command-expression">Infix Command
+      Expression</a></li>
+      </ul></li>
+      <li><a href="#ids" id="toc-ids">Ids</a>
+      <ul>
+      <li><a href="#command-id" id="toc-command-id">Command Id</a></li>
+      <li><a href="#prefix-operator-id"
+      id="toc-prefix-operator-id">Prefix Operator Id</a></li>
+      <li><a href="#postfix-operator-id"
+      id="toc-postfix-operator-id">Postfix Operator Id</a></li>
+      <li><a href="#infix-operator-id" id="toc-infix-operator-id">Infix
+      Operator Id</a></li>
+      <li><a href="#infix-command-operator-id"
+      id="toc-infix-command-operator-id">Infix Command Operator
+      Id</a></li>
+      <li><a href="#variadic" id="toc-variadic">Variadic</a></li>
+      </ul></li>
+      <li><a href="#structural-language"
+      id="toc-structural-language">Structural Language</a>
+      <ul>
+      <li><a href="#overview" id="toc-overview">Overview</a></li>
+      <li><a href="#clauses" id="toc-clauses">Clauses</a></li>
+      <li><a href="#definitions"
+      id="toc-definitions">Definitions</a></li>
+      <li><a href="#results" id="toc-results">Results</a></li>
+      <li><a href="#resources" id="toc-resources">Resources</a></li>
+      <li><a href="#configuration"
+      id="toc-configuration">Configuration</a></li>
+      <li><a href="#people" id="toc-people">People</a></li>
+      <li><a href="#documented" id="toc-documented">Documented</a></li>
+      <li><a href="#provides" id="toc-provides">Provides</a></li>
+      <li><a href="#justified" id="toc-justified">Justified</a></li>
+      <li><a href="#proofs" id="toc-proofs">Proofs</a>
+      <ul>
+      <li><a href="#structuring-constructs"
+      id="toc-structuring-constructs">Structuring Constructs</a></li>
+      <li><a href="#introductory-constructs"
+      id="toc-introductory-constructs">Introductory Constructs</a></li>
+      <li><a href="#symbol-introduction-constructs"
+      id="toc-symbol-introduction-constructs">Symbol Introduction
+      Constructs</a></li>
+      <li><a href="#reasoning-constructs"
+      id="toc-reasoning-constructs">Reasoning Constructs</a></li>
+      <li><a href="#flow-of-thought-constructs"
+      id="toc-flow-of-thought-constructs">Flow of Thought
+      Constructs</a></li>
+      <li><a href="#logical-constructs"
+      id="toc-logical-constructs">Logical Constructs</a></li>
+      <li><a href="#terminating-constructs"
+      id="toc-terminating-constructs">Terminating Constructs</a></li>
+      </ul></li>
+      </ul></li>
+      <li><a href="#labels" id="toc-labels">Labels</a>
+      <ul>
+      <li><a href="#declaring" id="toc-declaring">Declaring</a></li>
+      <li><a href="#referencing"
+      id="toc-referencing">Referencing</a></li>
+      </ul></li>
+      <li><a href="#writing" id="toc-writing">Writing</a>
+      <ul>
+      <li><a href="#overview-1" id="toc-overview-1">Overview</a></li>
+      </ul></li>
+      <li><a href="#written" id="toc-written">Written</a>
+      <ul>
+      <li><a href="#overview-2" id="toc-overview-2">Overview</a></li>
+      </ul></li>
+      <li><a href="#sigils" id="toc-sigils">Sigils</a></li>
+      <li><a href="#order-of-operations"
+      id="toc-order-of-operations">Order of operations</a></li>
+      <li><a href="#type-checking" id="toc-type-checking">Type
+      checking</a></li>
+      <li><a href="#symbol-resolution" id="toc-symbol-resolution">Symbol
+      Resolution</a></li>
+      <li><a href="#encoded-as" id="toc-encoded-as">Encoded As</a></li>
+      <li><a href="#viewed-as" id="toc-viewed-as">Viewed As</a></li>
+      <li><a href="#fx-y-z-interpretation"
+      id="toc-fx-y-z-interpretation">f(x, y, z) interpretation</a></li>
+      <li><a href="#functions-and-operators"
+      id="toc-functions-and-operators">Functions and Operators</a></li>
+      <li><a href="#symbol-resolution-1"
+      id="toc-symbol-resolution-1">Symbol Resolution</a></li>
+      </ul>
+    </nav>
+  
+    <div id="mainContent">
+        <button id="openNavBtn" onclick="openNav()">&#9776;</button>
+        <div
+        style="text-align: center; color: #005cc5; font-size: 300%; margin-bottom: -1em;">
+        <p>Mathlingua</p>
+        </div>
+        <div style="display: flex; justify-content: center;">
+        <p><img src="./images/mlg-logo.png"
+              alt="Mathlingua logo"
+              style="margin-left: auto; margin-right: auto; height: 128px; width: 128px;" /></p>
+        </div>
+        <h2 id="introduction">Introduction</h2>
+        <p>Mathlingua is a language specially designed to create
+        encyclopedias of mathematical knowledge with the goal to make it
+        <em>easier</em> to learn and understand mathematics, in
+        particular to remove ambiguity, illustrate the relationship
+        between mathematical concepts, and highlight aspects of
+        definitions and theorems that are easy to overlook.</p>
+        <p>It is created to address the unique needs for recording
+        mathematical knowledge, that include but are not limited to:</p>
+        <ul>
+        <li>that a Hilbert space extends the concept of a vector space
+        with additional properties, and, although it is not directly a
+        Banach space, it can be viewed as one</li>
+        <li>that an integer is, strictly speaking, <em>not</em> a real
+        number, but it can be viewed as one</li>
+        <li>that in the expression <span class="math inline">\(x +
+        n\)</span> where <span class="math inline">\(x\)</span> is a
+        real number an <span class="math inline">\(n\)</span> is an
+        integer, <span class="math inline">\(+\)</span> is interpreted
+        as <em>real</em> addition because the integer <span
+        class="math inline">\(n\)</span> is <em>viewed as</em> a real
+        number</li>
+        <li>that a function can be though of abstractly as a standalone
+        concept that is a mapping from an input to a unique output, but
+        can also be <em>encoded</em> as a set of pairs, and thus thought
+        of as a set if needed</li>
+        <li>that a continuous function is an abstract concept while the
+        real-valued function <span class="math inline">\(f(x) :=
+        \sin(x)\)</span> is a concrete example of a continuous function
+        on <span class="math inline">\(\mathbb{R}\)</span></li>
+        <li>that a group can be thought of as a <em>tuple</em> <span
+        class="math inline">\(G := (X, *, e)\)</span>, where a
+        tuple-like object is different from a function like object, is
+        different from a set-like object</li>
+        <li>that when one says <span class="math inline">\(x \in
+        G\)</span> where <span class="math inline">\(G := (X, *,
+        e)\)</span> with <span class="math inline">\(X\)</span> a set
+        that one means <span class="math inline">\(x \in X\)</span></li>
+        <li>that <span class="math inline">\(\int f\)</span> can
+        potentially represent the Riemann integral, Lebesgue integral,
+        Daniel integral, etc. of a function <span
+        class="math inline">\(f\)</span> and thus, math symbols can be
+        ambiguous. Mathlingua addresses this by separating the name
+        defining a concept and how it is rendered.</li>
+        <li>that in the expression <span class="math display">\[
+        \int_a^b f(x) \: dx
+        \]</span> the exact symbols <span
+        class="math inline">\(a\)</span>, <span
+        class="math inline">\(b\)</span>, and <span
+        class="math inline">\(f\)</span> are important, but the symbol
+        <span class="math inline">\(x\)</span> can be replaced with any
+        symbol (other than <span class="math inline">\(a\)</span>, <span
+        class="math inline">\(b\)</span>, or <span
+        class="math inline">\(f\)</span>) without changing the meaning
+        of the expression.</li>
+        <li>that definitions and theorems expect certain types of
+        mathematical objects as inputs. That is, if a theorem says given
+        a monoid <span class="math inline">\(M\)</span>, one cannot use
+        a continuous function <span class="math inline">\(f\)</span> for
+        <span class="math inline">\(M\)</span> because a continuous
+        function is not a monoid. However, one could use a group <span
+        class="math inline">\(G\)</span> because a group <em>is</em> a
+        monoid.</li>
+        <li>that when one says <span class="math inline">\(A \subset
+        B\)</span> for some sets <span class="math inline">\(A\)</span>
+        and <span class="math inline">\(B\)</span> that it is implied
+        that also <span class="math inline">\(B \supset A\)</span>.</li>
+        <li>that in the expression <span class="math inline">\(x + y *
+        z\)</span>, where <span class="math inline">\(x\)</span>, <span
+        class="math inline">\(y\)</span>, and <span
+        class="math inline">\(z\)</span> are real numbers, the
+        expression should be evaluated as <span class="math inline">\(x
+        + (y * z)\)</span>.</li>
+        <li>that to describe <span class="math inline">\(f\)</span>
+        verbally one could say that <span
+        class="math inline">\(f\)</span> is a function from <span
+        class="math inline">\(A\)</span> to <span
+        class="math inline">\(B\)</span>, but in writing would write
+        <span class="math inline">\(f \: : \: A \rightarrow
+        B\)</span>.</li>
+        <li>that if <span class="math inline">\(G := (X, *, e)\)</span>
+        is a group and <span class="math inline">\(x,y\)</span> are
+        elements of <span class="math inline">\(G\)</span> then the
+        <span class="math inline">\(*\)</span> in <span
+        class="math inline">\(x * y\)</span> refers to the <span
+        class="math inline">\(*\)</span> in the tuple <span
+        class="math inline">\((X, *, e)\)</span>.</li>
+        <li>that when specifying a definition, theorem, axiom,
+        conjecture, or proof, to remove ambiguity, it is essential to
+        allow the <em>type</em> of each symbol used be determined. That
+        is, do not just write <span class="math inline">\(x + n\)</span>
+        but specify that <span class="math inline">\(x\)</span> is real
+        and <span class="math inline">\(n\)</span> is an integer.</li>
+        <li>to fully record mathematical knowledge, it is important to
+        not just record statements of definitions, theorems, etc. but
+        also describe their history, importance, use, and how how they
+        related to other math concepts</li>
+        <li>in addition to definitions, theorems, etc. it is important
+        to record information about math resources such as books,
+        articles, etc. as well as people that discovered mathematical
+        results</li>
+        </ul>
+        <h2 id="the-need-for-a-recording-mathematics">The Need for a
+        Recording Mathematics</h2>
+        <p>There are many examples in mathematics of concepts being
+        rediscovered. This could be from the fact that it is often times
+        difficult to find what has already been discovered. This is
+        compounded by the observation that different authors can use
+        very different nomenclature and notation for the same
+        concepts.</p>
+        <p>Further, as more and more mathematics is discovered, it is
+        becoming harder and harder for any individual to follow
+        everything new. This is especially difficult since many
+        discoveries may be in journals that are hard to search and
+        require subscriptions, and thus are not accessible to most.</p>
+        <p>As a result, a standard repository of all mathematics in a
+        clear, consistent format is needed to help this and future
+        generations discover and record mathematics.</p>
+        <h2 id="existing-math-collections">Existing Math
+        Collections</h2>
+        <p>Existing collections of mathematical knowledge typically fall
+        into two categories. First are books, articles, journals,
+        encyclopedias, etc. while the second are collections written in
+        theorem proving languages such as Lean, Coq, Mizar, etc.</p>
+        <p>For the first category, different math concepts can be spread
+        across different books or other resources. Even for
+        encyclopedias, nomenclature and notation can vary across the
+        encyclopedia.</p>
+        <p>Next, these resources are written in natural language, and
+        are thus difficult for computers to search and understand. That
+        is, it is not easy to make computer search capabilities to
+        search math books, journals, and encyclopedias and find, for
+        example, all theorems that describe when a function is
+        measurable.</p>
+        <p>Further, mathematics written in natural language can be
+        imprecise and difficult to read because statements can rely on
+        context or conventions for information. For example, a theorem
+        might say for all <span class="math inline">\(x\)</span> and
+        <span class="math inline">\(y\)</span> there exists an <span
+        class="math inline">\(n\)</span> such that <span
+        class="math inline">\(x*n &gt; y\)</span>, where it is up to the
+        reader to infer, based on convention and the fact that the
+        theorem is in a real analysis book, that <span
+        class="math inline">\(x\)</span> and <span
+        class="math inline">\(y\)</span> refer to real numbers and <span
+        class="math inline">\(n\)</span> an integer.</p>
+        <p>Last, mathematics written in natural language do not have any
+        automated checking of any aspects of the statements. In
+        particular, a statement could have a typo in a symbol name, thus
+        using a name that is not defined anywhere or refer to a
+        definition that doesn’t exist, and it is up to manual review to
+        catch those mistakes.</p>
+        <hr />
+        <h1 id="formulation-forms">Formulation Forms</h1>
+        <h2 id="names">Names</h2>
+        <div class="sourceCode" id="cb1"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">x</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">x?</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a b&quot;</span></span></code></pre></div>
+        <h2 id="functions">Functions</h2>
+        <div class="sourceCode" id="cb2"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">f(x, y)</span></span></code></pre></div>
+        <h2 id="infix-operators">Infix Operators</h2>
+        <div class="sourceCode" id="cb3"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">x * y</span></span></code></pre></div>
+        <h2 id="prefix-operator">Prefix Operator</h2>
+        <div class="sourceCode" id="cb4"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">+x</span></span></code></pre></div>
+        <h2 id="suffix-operator">Suffix Operator</h2>
+        <div class="sourceCode" id="cb5"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">x!</span></span></code></pre></div>
+        <h2 id="tuples">Tuples</h2>
+        <div class="sourceCode" id="cb6"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">(x, y)</span></span></code></pre></div>
+        <h2 id="conditional-sets">Conditional Sets</h2>
+        <div class="sourceCode" id="cb7"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span><span class="at">x | ...</span><span class="kw">}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span><span class="at">f(x</span><span class="kw">,</span><span class="at"> y) | ...</span><span class="kw">}</span></span></code></pre></div>
+        <h2 id="functional-literal">Functional Literal</h2>
+        <div class="sourceCode" id="cb8"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">x |-&gt; f(x)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">(x, y) |-&gt; f(x, y)</span></span></code></pre></div>
+        <h2 id="conditional-set-id-form">Conditional Set Id Form</h2>
+        <div class="sourceCode" id="cb9"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">x</span><span class="kw">]</span><span class="at">{x | f(x)...}</span></span></code></pre></div>
+        <h2 id="colon-equals-form">Colon Equals Form</h2>
+        <div class="sourceCode" id="cb10"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="at">X := (a, b)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="at">f(x) := y</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">f(x) := (a, b)</span></span></code></pre></div>
+        <h1 id="formulation-expressions">Formulation Expressions</h1>
+        <h2 id="function-expression">Function Expression</h2>
+        <div class="sourceCode" id="cb11"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">f(x + y, z)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">(f + g)(x)</span></span></code></pre></div>
+        <h2 id="function-literals">Function Literals</h2>
+        <div class="sourceCode" id="cb12"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="at">x |-&gt; x + 1</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">(x, y) |-&gt; x + y</span></span></code></pre></div>
+        <h2 id="tuples-1">Tuples</h2>
+        <div class="sourceCode" id="cb13"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="at">(x + y, z)</span></span></code></pre></div>
+        <h2 id="groupings">Groupings</h2>
+        <div class="sourceCode" id="cb14"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">(x + y)</span></span></code></pre></div>
+        <h2 id="invisible-groupings">Invisible Groupings</h2>
+        <div class="sourceCode" id="cb15"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="at">(:x + y:)</span></span></code></pre></div>
+        <h2 id="conditional-set-expression">Conditional Set
+        Expression</h2>
+        <p>TODO: update this to use the second |</p>
+        <div class="sourceCode" id="cb16"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">x</span><span class="kw">]</span><span class="at">{(x, x+1) | x is \real ; x &gt; 0}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">x</span><span class="kw">]</span><span class="at">{(x, x+1) | x is \real}</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">x</span><span class="kw">,</span><span class="at"> </span><span class="ch">y</span><span class="kw">]</span><span class="at">{x + y | x, y is \real ; x &gt; 0 ; y &gt; 0}</span></span></code></pre></div>
+        <h2 id="command-expressions">Command Expressions</h2>
+        <div class="sourceCode" id="cb17"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="at">\function:on{A}:to{B}</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="at">\a.b.c{x, y}</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="at">\a.b.c(x, y)</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="at">\a.b.c[x, y]{x + y}</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="at">\a.b.c[x, y]{x + y | x, y is \real ; x &gt; 0 ; y &lt; 0}</span></span></code></pre></div>
+        <h2 id="prefix-operator-1">Prefix Operator</h2>
+        <div class="sourceCode" id="cb18"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="at">-x</span></span></code></pre></div>
+        <h2 id="postfix-operator">Postfix Operator</h2>
+        <div class="sourceCode" id="cb19"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="at">x!</span></span></code></pre></div>
+        <h2 id="infix-operator">Infix Operator</h2>
+        <div class="sourceCode" id="cb20"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="at">x + y</span></span></code></pre></div>
+        <h2 id="is-expression">Is Expression</h2>
+        <p>TODO: Update this so the right-hand-side is exactly one type
+        (i.e. <code>\x &amp; \y</code> is not supported)</p>
+        <div class="sourceCode" id="cb21"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="at">x is \y</span></span></code></pre></div>
+        <h2 id="also-expression">Also Expression</h2>
+        <div class="sourceCode" id="cb22"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="at">x also \a &amp; \b</span></span></code></pre></div>
+        <h2 id="equality">Equality</h2>
+        <div class="sourceCode" id="cb23"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="at">x = y</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="at">x != y</span></span></code></pre></div>
+        <h2 id="extends-expression">Extends Expression</h2>
+        <div class="sourceCode" id="cb24"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="at">x extends \y</span></span></code></pre></div>
+        <h2 id="as-expression">As Expression</h2>
+        <div class="sourceCode" id="cb25"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="at">x as \:y</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="at">x as (a, b, c)</span></span></code></pre></div>
+        <p>The <code>as</code> operator is used to cast a symbol to
+        another type or another form. The <code>x as (a, b, c)</code>
+        form is used to cast to another form.</p>
+        When processing <code>x as &lt;form&gt;</code> the type of
+        <code>x</code> is used to determine if it has a view as the
+        specified form. If so, that description is used to convert to
+        the form. Otherwise, if x is a tuple and
+        <form>
+        is a tuple containing a subset of the items from x, then the
+        cast is that tuple of the subset of the items (where
+        <form>
+        <p>doesn’t need to have elements in the same order as x).
+        Otherwise, the cast fails (for opaque symbols, functions, or
+        sets).</p>
+        <p>When processing <code>x as \:&lt;type&gt;</code> the type of
+        <code>x</code> is used to determine if <code>x</code> can be
+        cast as the specified type.</p>
+        <p>Note: The <code>as</code> operator can be used twice to
+        convert to another type so that the form can also be
+        changed.</p>
+        <div class="sourceCode" id="cb26"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="at">x as \:function as [a,b]{(a,b)|...}</span></span></code></pre></div>
+        <h3 id="implicit-conversions">Implicit Conversions</h3>
+        <p>A tuple will automatically cast to a tuple with fewer
+        elements. That is, if <code>X := (a, b, c)</code> then one can
+        write <code>X is \something</code> where <code>\something</code>
+        expects a tuple of the form <code>(x, y)</code>.</p>
+        <p>Functions, opaque symbols, and sets do not have implicit
+        conversions.</p>
+        <p>The consequence of this is that it is possible to write
+        something like:</p>
+        <div class="sourceCode" id="cb27"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="at">R := (X, +, *, 0, 1) is \commutative.ring</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="at">R also \commutative.ring.with.identity</span></span></code></pre></div>
+        <p>The <code>\commutative.ring.with.identity</code> expects to
+        be of the form <code>(X, +, *, 0, 1)</code> but
+        <code>\commutative.ring</code> only needs to be of the form
+        <code>(X, +, *, 0)</code>. This is ok because the
+        <code>(X, +, *, 0, 1)</code> is cast as
+        <code>(X, +, *, 0)</code> and the <code>\commutative.ring</code>
+        definition only sets the types of <code>X</code>,
+        <code>+</code>, <code>*</code>, and <code>0</code>.</p>
+        <h2 id="ordinal-call-expression">Ordinal Call Expression</h2>
+        <div class="sourceCode" id="cb28"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="at">x[1]</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="at">x[i[k]]</span></span></code></pre></div>
+        <h2 id="chain-expression">Chain Expression</h2>
+        <div class="sourceCode" id="cb29"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="at">(x + y).z.a.b</span></span></code></pre></div>
+        <h2 id="select-from-builtin">Select From Builtin</h2>
+        <div class="sourceCode" id="cb30"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\select{statement|specification}:from{x}</span></span></code></pre></div>
+        <h2 id="signatures">Signatures</h2>
+        <p>A signature is a type without any types for the inputs
+        specified.</p>
+        <div class="sourceCode" id="cb31"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="at">\:a.b.c:d:e</span></span></code></pre></div>
+        <h2 id="types">Types</h2>
+        <div class="sourceCode" id="cb32"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="at">\:a.b.c:x{\x + \:a &amp; \:b, \:c}:y{\:d}</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="at">\:continuous.function:on{\:set}:to{\:set}</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="at">\:continuous.function:on{?}:to{?}</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="at">(\:set &amp; \:group) \:to:/ \:set</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="at">\:set \:to:/ \:set</span></span></code></pre></div>
+        <h2 id="type-builtin">Type Builtin</h2>
+        <div class="sourceCode" id="cb33"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\type{\:set + \:group &amp; \:ring}</span></span></code></pre></div>
+        <h2 id="formulation-builtin">Formulation Builtin</h2>
+        <div class="sourceCode" id="cb34"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\formulation{expression | statement}</span></span></code></pre></div>
+        <h2 id="boolean-builtin">Boolean Builtin</h2>
+        <div class="sourceCode" id="cb35"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\boolean</span></span></code></pre></div>
+        <h2 id="boolean-value-builtin">Boolean Value Builtin</h2>
+        <div class="sourceCode" id="cb36"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\true</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="at">\\false</span></span></code></pre></div>
+        <h2 id="type-of-builtin">Type-of Builtin</h2>
+        <div class="sourceCode" id="cb37"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\type:of{x}</span></span></code></pre></div>
+        <h2 id="map-builtin">Map Builtin</h2>
+        <div class="sourceCode" id="cb38"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\map{x[i]}:to{x[i] + 1}</span></span></code></pre></div>
+        <h2 id="map-else-builtin">Map Else Builtin</h2>
+        <div class="sourceCode" id="cb39"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\map{x[i[k]]}:to{x[i[k]] + 1}:else{0}</span></span></code></pre></div>
+        <h2 id="definition-of-builtins">Definition Of Builtins</h2>
+        <div class="sourceCode" id="cb40"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{f}</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{f}:satisfies{\:continuous.function:on:to}</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{f}:satisfies{\:continuous.function:on{A}:to{B}}</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{f}:satisfies{\:continuous.function:on:to::(some.label)}</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{f}:satisfies{\:continuous.function:on{A}:to{B}::(some.label)}</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{A \subset/ B}:satisfies{\:some.thing}</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{A \subset/ B}:satisfies{\:some.thing::(some.label)}</span></span></code></pre></div>
+        <h2 id="colon-equals-expression">Colon Equals Expression</h2>
+        <div class="sourceCode" id="cb41"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="at">f(x) := x + 1</span></span></code></pre></div>
+        <h2 id="colon-arrow-expression">Colon Arrow Expression</h2>
+        <div class="sourceCode" id="cb42"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="at">x + y :=&gt; x</span></span></code></pre></div>
+        <h2 id="colon-dash-arrow-expression">Colon Dash Arrow
+        Expression</h2>
+        <div class="sourceCode" id="cb43"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x [.in.]</span><span class="kw">:</span><span class="at"> y :-&gt; x; y</span></span></code></pre></div>
+        <h2 id="enclosed-non-command-operator">Enclosed Non-command
+        Operator</h2>
+        <p>TODO: Do not allow the form (. .)</p>
+        <p>TODO: Disallow the forms:</p>
+        <pre><code>[.in.]
+:[.in.]</code></pre>
+        <p>Aliases <code>is</code> statements</p>
+        <div class="sourceCode" id="cb45"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">.x.</span><span class="kw">]:</span></span></code></pre></div>
+        <p>Aliases expressions</p>
+        <div class="sourceCode" id="cb46"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span><span class="at">.x.</span><span class="kw">}:</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="at">:{.x.}</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span><span class="at">.x.</span><span class="kw">}</span></span></code></pre></div>
+        <h2 id="non-enclosed-non-command-operator">Non-enclosed
+        Non-command Operator</h2>
+        <div class="sourceCode" id="cb47"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="at">*</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="at">++</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="at">:+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">+</span><span class="kw">:</span></span></code></pre></div>
+        <h2 id="infix-command-expression">Infix Command Expression</h2>
+        <p>TODO: do not allow the form ( )/</p>
+        <div class="sourceCode" id="cb48"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="at">\{function:on{A}:to{B}}/</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="at">\[function:on{A}:to{B}]/</span></span></code></pre></div>
+        <h1 id="ids">Ids</h1>
+        <h2 id="command-id">Command Id</h2>
+        <div class="sourceCode" id="cb49"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="at">\function:on{A}:to{B}</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="at">\function:on{A}:to[x,y]{f(x,y)}@{x}</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="at">\function:on{A}:to[x,y]{f(x,y)}@d{x}</span></span></code></pre></div>
+        <h2 id="prefix-operator-id">Prefix Operator Id</h2>
+        <div class="sourceCode" id="cb50"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="at">-x</span></span></code></pre></div>
+        <h2 id="postfix-operator-id">Postfix Operator Id</h2>
+        <div class="sourceCode" id="cb51"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="at">x!</span></span></code></pre></div>
+        <h2 id="infix-operator-id">Infix Operator Id</h2>
+        <div class="sourceCode" id="cb52"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="at">x + y</span></span></code></pre></div>
+        <h2 id="infix-command-operator-id">Infix Command Operator
+        Id</h2>
+        <p>TODO: Do not allow the form ( )/</p>
+        <div class="sourceCode" id="cb53"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="at">A \{subset}/ B</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="at">A \[subset]/ B</span></span></code></pre></div>
+        <h2 id="variadic">Variadic</h2>
+        <div class="sourceCode" id="cb54"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="at">x...</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="at">x[i...]</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="at">x[i...n]</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="at">x[i[j...n]]</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="at">(x[i[j...n]], y[i[j...n]])</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="at">f(x...)</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="at">f(x...)...</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="at">(x...)</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="at">(f(x...)...)</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="at">X... := (a, b, c)...</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="at">X... := {x | ...}...</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="at">X... := {f(x) | ...}...</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="at">x... := a...</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="at">x... is \a</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="at">x... satisfies \a</span></span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="at">x... extends \a</span></span></code></pre></div>
+        <p>TODO: specify what <code>x... = y...</code> means. In
+        particular, <code>(a, b, c) = (x, y, z)</code> defaults to
+        <code>a = x</code> and <code>b = y</code> and
+        <code>c = z</code>.</p>
+        <h1 id="structural-language">Structural Language</h1>
+        <h2 id="overview">Overview</h2>
+        <div class="sourceCode" id="cb55"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="at">Clause ::= &lt;Text&gt;</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="at">         | &lt;Formulation&gt;</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="at">         | &lt;Spec&gt;</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| all</span><span class="kw">:</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| not</span><span class="kw">:</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| anyOf</span><span class="kw">:</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| oneOf</span><span class="kw">:</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| equivalently</span><span class="kw">:</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| exists</span><span class="kw">:</span></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| existsUnique</span><span class="kw">:</span></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| forAll</span><span class="kw">:</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| if</span><span class="kw">:</span></span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| iff</span><span class="kw">:</span></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| when</span><span class="kw">:</span></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| piecewise</span><span class="kw">:</span></span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| declare</span><span class="kw">:</span></span></code></pre></div>
+        <h2 id="clauses">Clauses</h2>
+        <div class="sourceCode" id="cb56"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">equivalently</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb57"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">allOf</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb58"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anyOf</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb59"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneOf</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb60"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">not</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb61"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb62"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">existsUnique</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb63"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forAll</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+ </span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb64"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb65"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iff</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb66"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">when</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb67"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">piecewise</span><span class="kw">:</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">if</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="fu">elseIf?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="fu">then?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">else?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb68"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">declare</span><span class="kw">:</span><span class="at"> &lt;Target&gt;</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
+        <h2 id="definitions">Definitions</h2>
+        <div class="sourceCode" id="cb69"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Captures</span><span class="kw">:</span><span class="at"> &lt;Formulation&gt;+</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Justified?</span><span class="kw">:</span><span class="at"> &lt;JustifiedKind&gt;+</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb70"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Defines</span><span class="kw">:</span><span class="at"> &lt;Target&gt;</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">when?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="fu">means?/equivalentTo</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="fu">expresses?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Provides?</span><span class="kw">:</span><span class="at"> &lt;ProvidesKind&gt;+</span></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Justified?</span><span class="kw">:</span><span class="at"> &lt;JustifiedKind&gt;+</span></span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb71"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Describes</span><span class="kw">:</span><span class="at"> &lt;Target&gt;</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">when?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">extends?/equivalentTo</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">specifies?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Provides?</span><span class="kw">:</span><span class="at"> &lt;ProvidesKind&gt;+</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Justified?</span><span class="kw">:</span><span class="at"> &lt;JustifiedKind&gt;+</span></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb72"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">States</span><span class="kw">:</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">when?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="fu">that</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Justified?</span><span class="kw">:</span><span class="at"> &lt;JustifiedKind&gt;+</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <h2 id="results">Results</h2>
+        <div class="sourceCode" id="cb73"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Axiom</span><span class="kw">:</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">given?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="fu">if?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="fu">iff?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb74"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Conjecture</span><span class="kw">:</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">given?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="fu">if?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="fu">iff?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb75"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Corollary</span><span class="kw">:</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">to</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">given?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="fu">if?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="fu">iff?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Proof?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
+<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb76"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Lemma</span><span class="kw">:</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">for</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">given?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="fu">if?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="fu">iff?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Proof?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
+<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb77"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Theorem</span><span class="kw">:</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">given?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="fu">if?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="fu">iff?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Proof?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Documented?</span><span class="kw">:</span><span class="at"> &lt;DocumentedKind&gt;+</span></span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="fu">References?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <h2 id="resources">Resources</h2>
+        <div class="sourceCode" id="cb78"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Resource</span><span class="kw">:</span><span class="at"> &lt;ResourceKind&gt;+</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb79"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="at">ResourceKind :</span><span class="fu">:= description</span><span class="kw">:</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| title</span><span class="kw">:</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| type</span><span class="kw">:</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| url</span><span class="kw">:</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| volume</span><span class="kw">:</span></span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| month</span><span class="kw">:</span></span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| offset</span><span class="kw">:</span></span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| publisher</span><span class="kw">:</span></span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| author</span><span class="kw">:</span></span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| edition</span><span class="kw">:</span></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| editor</span><span class="kw">:</span></span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| homepage</span><span class="kw">:</span></span>
+<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| institution</span><span class="kw">:</span></span>
+<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| journal</span><span class="kw">:</span></span>
+<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a><span class="at">               </span><span class="fu">| year</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb80"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb81"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb82"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">type</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb83"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">url</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb84"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volume</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb85"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb86"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">offset</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb87"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">publisher</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb88"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb89"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edition</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb90"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb91"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">homepage</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb92"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">institution</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb93"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">journal</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb94"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <h2 id="configuration">Configuration</h2>
+        <div class="sourceCode" id="cb95"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Specify</span><span class="kw">:</span><span class="at"> &lt;SpecifyKind&gt;+</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb96"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="at">SpecifyKind :</span><span class="fu">:= positiveFloat</span><span class="kw">:</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">| positiveInt</span><span class="kw">:</span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">| negativeFloat</span><span class="kw">:</span></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">| negativeInt</span><span class="kw">:</span></span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">| zero</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb97"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">positiveFloat</span><span class="kw">:</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">means</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb98"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">positiveInt</span><span class="kw">:</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">means</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb99"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">negativeFloat</span><span class="kw">:</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">means</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb100"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">negativeInt</span><span class="kw">:</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">means</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb101"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zero</span><span class="kw">:</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">means</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;</span></span></code></pre></div>
+        <h2 id="people">People</h2>
+        <div class="sourceCode" id="cb102"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Person</span><span class="kw">:</span><span class="at"> &lt;PersonKind&gt;+</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb103"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="at">PersonKind :</span><span class="fu">:= name</span><span class="kw">:</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="at">             </span><span class="fu">| biography</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb104"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb105"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biography</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
+        <h2 id="documented">Documented</h2>
+        <div class="sourceCode" id="cb106"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="at">DocumentedKind :</span><span class="fu">:= overview</span><span class="kw">:</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="at">                 </span><span class="fu">| related</span><span class="kw">:</span></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="at">                 </span><span class="fu">| written</span><span class="kw">:</span></span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="at">                 </span><span class="fu">| called</span><span class="kw">:</span></span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="at">                 </span><span class="fu">| writing</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb107"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">overview</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb108"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">related</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb109"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">written</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb110"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">called</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
+        <p>TODO: specify that writing: excepts a text of the form “… as
+        …”</p>
+        <div class="sourceCode" id="cb111"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writing</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
+        <h2 id="provides">Provides</h2>
+        <div class="sourceCode" id="cb112"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">symbol</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">replaces?</span><span class="kw">:</span><span class="at"> &lt;Formulation&gt;</span></span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="fu">written?</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb113"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span><span class="kw">:</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as</span><span class="kw">:</span><span class="at"> &lt;Target&gt;</span></span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="fu">through?</span><span class="kw">:</span><span class="at"> &lt;Formulation&gt;</span></span>
+<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="fu">signifies?</span><span class="kw">:</span><span class="at"> &lt;Formulation&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb114"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">encoding</span><span class="kw">:</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as</span><span class="kw">:</span><span class="at"> &lt;Target&gt;</span></span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="fu">through?</span><span class="kw">:</span><span class="at"> &lt;Formulation&gt;</span></span></code></pre></div>
+        <h2 id="justified">Justified</h2>
+        <div class="sourceCode" id="cb115"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="at">JustifiedKind :</span><span class="fu">:= by</span><span class="kw">:</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| label</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb116"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span><span class="kw">:</span><span class="at"> &lt;ProofItem&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb117"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">label</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span><span class="kw">:</span><span class="at"> &lt;ProofItem&gt;+</span></span></code></pre></div>
+        <h2 id="proofs">Proofs</h2>
+        <h3 id="structuring-constructs">Structuring Constructs</h3>
+        <div class="sourceCode" id="cb118"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="at">ProofItemKind :</span><span class="fu">:= block</span><span class="kw">:</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| remark</span><span class="kw">:</span></span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| partwise</span><span class="kw">:</span></span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| casewise</span><span class="kw">:</span></span>
+<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| stepwise</span><span class="kw">:</span></span>
+<span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| withoutLossOfGenerality</span><span class="kw">:</span></span>
+<span id="cb118-7"><a href="#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| forContradiction</span><span class="kw">:</span></span>
+<span id="cb118-8"><a href="#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| forInduction</span><span class="kw">:</span></span>
+<span id="cb118-9"><a href="#cb118-9" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| forContrapositive</span><span class="kw">:</span></span>
+<span id="cb118-10"><a href="#cb118-10" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| claim</span><span class="kw">:</span></span>
+<span id="cb118-11"><a href="#cb118-11" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| suppose</span><span class="kw">:</span></span>
+<span id="cb118-12"><a href="#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| sufficesToShow</span><span class="kw">:</span></span>
+<span id="cb118-13"><a href="#cb118-13" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| toShow</span><span class="kw">:</span></span>
+<span id="cb118-14"><a href="#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| exists</span><span class="kw">:</span></span>
+<span id="cb118-15"><a href="#cb118-15" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| exists</span><span class="kw">:</span></span>
+<span id="cb118-16"><a href="#cb118-16" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| existsUnique</span><span class="kw">:</span></span>
+<span id="cb118-17"><a href="#cb118-17" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| forAll</span><span class="kw">:</span></span>
+<span id="cb118-18"><a href="#cb118-18" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| declare</span><span class="kw">:</span></span>
+<span id="cb118-19"><a href="#cb118-19" aria-hidden="true" tabindex="-1"></a><span class="at">                | because</span><span class="fu">:then</span><span class="kw">:</span></span>
+<span id="cb118-20"><a href="#cb118-20" aria-hidden="true" tabindex="-1"></a><span class="at">                | by</span><span class="fu">:then</span><span class="kw">:</span></span>
+<span id="cb118-21"><a href="#cb118-21" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| hence</span><span class="kw">:</span></span>
+<span id="cb118-22"><a href="#cb118-22" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| next</span><span class="kw">:</span></span>
+<span id="cb118-23"><a href="#cb118-23" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| notice</span><span class="kw">:</span></span>
+<span id="cb118-24"><a href="#cb118-24" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| then</span><span class="kw">:</span></span>
+<span id="cb118-25"><a href="#cb118-25" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| therefore</span><span class="kw">:</span></span>
+<span id="cb118-26"><a href="#cb118-26" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| thus</span><span class="kw">:</span></span>
+<span id="cb118-27"><a href="#cb118-27" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| oneOf</span><span class="kw">:</span></span>
+<span id="cb118-28"><a href="#cb118-28" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| allOf</span><span class="kw">:</span></span>
+<span id="cb118-29"><a href="#cb118-29" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| anyOf</span><span class="kw">:</span></span>
+<span id="cb118-30"><a href="#cb118-30" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| equivalently</span><span class="kw">:</span></span>
+<span id="cb118-31"><a href="#cb118-31" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| if</span><span class="kw">:</span></span>
+<span id="cb118-32"><a href="#cb118-32" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| iff</span><span class="kw">:</span></span>
+<span id="cb118-33"><a href="#cb118-33" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| not</span><span class="kw">:</span></span>
+<span id="cb118-34"><a href="#cb118-34" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| absurd</span><span class="kw">:</span></span>
+<span id="cb118-35"><a href="#cb118-35" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| contradiction</span><span class="kw">:</span></span>
+<span id="cb118-36"><a href="#cb118-36" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| done</span><span class="kw">:</span></span>
+<span id="cb118-37"><a href="#cb118-37" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| qed</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb119"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">block</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb120"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remark</span><span class="kw">:</span><span class="at"> &lt;text&gt;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb121"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">partwise</span><span class="kw">:</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">part+</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb122"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">casewise</span><span class="kw">:</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">case+</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="fu">else?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb123"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stepwise</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb124"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">withoutLossOfGenerality</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb125"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forContradiction</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb126"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forInduction</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb127"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forContrapositive</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <h3 id="introductory-constructs">Introductory Constructs</h3>
+        <div class="sourceCode" id="cb128"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">claim</span><span class="kw">:</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">given?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="fu">iff?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Proof?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb129"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppose</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb130"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sufficesToShow</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb131"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toShow</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">observe</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <h3 id="symbol-introduction-constructs">Symbol Introduction
+        Constructs</h3>
+        <div class="sourceCode" id="cb132"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb133"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">existsUnique</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb134"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forAll</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb135"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">declare</span><span class="kw">:</span><span class="at"> &lt;Target&gt;</span></span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
+<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
+<span id="cb135-4"><a href="#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
+<span id="cb135-5"><a href="#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <h3 id="reasoning-constructs">Reasoning Constructs</h3>
+        <div class="sourceCode" id="cb136"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">because</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb137"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <h3 id="flow-of-thought-constructs">Flow of Thought
+        Constructs</h3>
+        <div class="sourceCode" id="cb138"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hence</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">by?/because?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb139"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">next</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="at">by?</span><span class="fu">:/because?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb140"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">notice</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="at">by?</span><span class="fu">:/because?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb141"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="at">by?</span><span class="fu">:/because?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb142"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">therefore</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="at">by?</span><span class="fu">:/because?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb143"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">thus</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="at">by?</span><span class="fu">:/because</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <h3 id="logical-constructs">Logical Constructs</h3>
+        <div class="sourceCode" id="cb144"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneOf</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb145"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">allOf</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb146"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anyOf</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb147"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">equivalently</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb148"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb149"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iff</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
+<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
+        <div class="sourceCode" id="cb150"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">not</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;</span></span></code></pre></div>
+        <h3 id="terminating-constructs">Terminating Constructs</h3>
+        <div class="sourceCode" id="cb151"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">absurd</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb152"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contradiction</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb153"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">done</span><span class="kw">:</span></span></code></pre></div>
+        <div class="sourceCode" id="cb154"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qed</span><span class="kw">:</span></span></code></pre></div>
+        <h1 id="labels">Labels</h1>
+        <h2 id="declaring">Declaring</h2>
+        <div class="sourceCode" id="cb155"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;{:{: x + 1 :}(1) + y:}(some.label)&#39;</span></span></code></pre></div>
+        <div class="sourceCode" id="cb156"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;{:x+1:}(1)&#39;</span></span></code></pre></div>
+        <p>can be written as</p>
+        <div class="sourceCode" id="cb157"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;x + 1&#39;</span><span class="at">  (1)</span></span></code></pre></div>
+        <div class="sourceCode" id="cb158"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">some.label</span><span class="kw">]</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span><span class="kw">:</span><span class="at"> x</span></span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;...&#39;</span></span>
+<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;...&#39;</span></span></code></pre></div>
+        <h2 id="referencing">Referencing</h2>
+        <p>TODO: Update this</p>
+        <p>In addition to the following, the
+        <code>\\definition:of:satisfies</code> builtin can be used as a
+        reference:</p>
+        <div class="sourceCode" id="cb159"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="at">\:a.b.c:d:e::(some.label)</span></span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="at">\:a.b.c{x}:d{y}:e::(some.label)</span></span>
+<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="at">\(some.label)</span></span>
+<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="at">\some.theorem::(some.label)</span></span>
+<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="at">\some.theorem:given{x, y}::(some.label)</span></span></code></pre></div>
+        <h1 id="writing">Writing</h1>
+        <h2 id="overview-1">Overview</h2>
+        <div class="sourceCode" id="cb160"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;target as latex&quot;</span></span>
+<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;epsilon as </span><span class="sc">\v</span><span class="st">arepsilon&quot;</span></span>
+<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a(i) as a?_{i?}&quot;</span></span></code></pre></div>
+        <p>writing: uses the same replacement rules as written:</p>
+        <h1 id="written">Written</h1>
+        <h2 id="overview-2">Overview</h2>
+        <div class="sourceCode" id="cb161"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="at">x?</span></span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="at">x+?</span></span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="at">x-?</span></span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="at">x=?</span></span>
+<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="at">x?{... suffix}</span></span>
+<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="at">x?{prefix ...}</span></span>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="at">x?{... infix ...}</span></span>
+<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="at">x? is the same as x-?</span></span></code></pre></div>
+        <h1 id="sigils">Sigils</h1>
+        <h1 id="order-of-operations">Order of operations</h1>
+        <h1 id="type-checking">Type checking</h1>
+        <h1 id="symbol-resolution">Symbol Resolution</h1>
+        <h1 id="encoded-as">Encoded As</h1>
+        <h1 id="viewed-as">Viewed As</h1>
+        <h1 id="fx-y-z-interpretation">f(x, y, z) interpretation</h1>
+        <p>The following all mean the same:</p>
+        <div class="sourceCode" id="cb162"><pre
+        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="at">X := (x, y)</span></span>
+<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="at">f(X)</span></span>
+<span id="cb162-3"><a href="#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="at">f((x, y))</span></span>
+<span id="cb162-4"><a href="#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="at">f(x, y)</span></span></code></pre></div>
+        <p>that is the tuple is automatically collapsed. This aligns
+        with common math usage. Note: this only works for function
+        calls. That is <code>\foo{(x, y)}</code> and
+        <code>\foo{x, y}</code> are <strong>not</strong> the same.</p>
+        <h1 id="functions-and-operators">Functions and Operators</h1>
+        <p>The forms <code>x * y</code> and <code>"*"(x, y)</code> are
+        treated as the same. The same is true for <code>-x</code> and
+        <code>"-"(x)</code> as well as <code>x!</code> and
+        <code>"!"(x)</code>.</p>
+        <p>This means if <code>-x</code> and <code>x-</code> are both
+        operators in scope then the form <code>"-"(x)</code> cannot be
+        used since it is ambiguous. In this case, one of <code>-x</code>
+        and <code>x-</code> should be changed, or an alias made to
+        distinguish one form to another if <code>"-"(x)</code> needs to
+        be used.</p>
+        <h1 id="symbol-resolution-1">Symbol Resolution</h1>
+    </div>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inconsolata:wght@200..900&amp;display=swap" rel="stylesheet">
+  </body>
+</html>

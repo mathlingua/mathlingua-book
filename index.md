@@ -1,12 +1,11 @@
-
-<div style="display: flex">
-  <img src="./images/mlg-logo.png"
-      alt="Mathlingua logo"
-      style="margin-left: auto; margin-right: auto; height: 128px; width: 128px" />
+<div style="text-align: center; color: #005cc5; font-size: 300%; margin-bottom: -1em;">
+  Mathlingua
 </div>
 
-<div style="text-align: center; color: #005cc5; font-size: 300%;">
-  Mathlingua
+<div style="display: flex; justify-content: center;">
+  <img src="./images/mlg-logo.png"
+      alt="Mathlingua logo"
+      style="margin-left: auto; margin-right: auto; height: 128px; width: 128px;" />
 </div>
 
 ## Introduction
