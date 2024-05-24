@@ -71,9 +71,8 @@ body {
   margin-left: -15px;
 }
 
-#navPanel li::marker {
-  content: "";
-  color: black;
+#navPanel ul {
+  list-style-type: none
 }
 
 #navPanel a {
