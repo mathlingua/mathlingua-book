@@ -1,4 +1,5 @@
-<div style="text-align: center; color: #005cc5; font-size: 300%; margin-bottom: -1em;">
+
+<div id='#' style="text-align: center; color: #005cc5; font-size: 300%; margin-bottom: -1em;">
   Mathlingua
 </div>
 
@@ -7,8 +8,6 @@
       alt="Mathlingua logo"
       style="margin-left: auto; margin-right: auto; height: 128px; width: 128px;" />
 </div>
-
-## Introduction
 
 Mathlingua is a language specially designed to create encyclopedias of mathematical knowledge with the goal to make it *easier* to learn and understand mathematics, in particular to remove ambiguity, illustrate the relationship between mathematical concepts, and highlight aspects of definitions and theorems that are easy to overlook.
 

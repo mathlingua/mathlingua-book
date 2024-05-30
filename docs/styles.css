@@ -19,6 +19,7 @@ html {
 
 h1, h2, h3 {
   color: #005cc5 !important;
+  text-align: center;
 }
 
 .lang-yaml {
