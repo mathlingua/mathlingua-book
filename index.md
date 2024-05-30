@@ -55,11 +55,47 @@ Further, mathematics written in natural language can be imprecise and difficult 
 
 Last, mathematics written in natural language do not have any automated checking of any aspects of the statements.  In particular, a statement could have a typo in a symbol name, thus using a name that is not defined anywhere or refer to a definition that doesn't exist, and it is up to manual review to catch those mistakes.
 
------
+# Getting Started
 
-# Formulation Forms
+Mathlore is the site that hosts the community grown collection of mathematical knowledge encoded in the Mathlingua language.  You can access it at
+[mathlore.org](https://mathlore.org).  Contributions to Mathlore are welcome from everyone.
 
-## Names
+To get started first [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the [repository](https://github.com/mathlingua/mathlore-content).  Next, download the
+latest release of the Mathlingua command line tool from the
+[releases page](https://github.com/mathlingua/mathlingua/releases), rename it to `mlg`,
+and ensure it is in your `PATH`.
+
+Last, you can use whatever editor you like to edit Mathlingua code.  However, if you use [Visual Studio Code](https://code.visualstudio.com/) you can [install](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-an-extension) the [Mathlingua Language Support](https://marketplace.visualstudio.com/items?itemName=dominickramer.mathlingua-language-support) extension that provides syntax highlighting, autocompletion, and error diagnostics provided by `mlg`.
+
+> Mathlingua files have the `.math` extension and the `mathlingua-language-support` extension is designed to analyze any files with the `.math` extension.
+
+# The Mathlingua Tooling
+
+`mlg` is the Mathlingua command line tools used to interact with collections of Mathlingua
+documents.  It uses the format `mlg <command>` where `<command>` is an action to perform:
+
+* `mlg check`:  Analyzes all `.math` files in the current working directory recursively for any errors and prints them to the screen.  Optionally, if directory or `.math` file name(s) are specified, only errors for those files are printed to the screen.
+* `mlg view`: Serves the current directory's Mathlingua files at `http://localhost:8080` so that they can be viewed.
+* `mlg version`: Prints the Mathlingua version.
+* `mlg help`: Prints information about how to use `mlg`.
+
+# About the Author
+
+Mathlingua is designed and implemented by Dominic Kramer.
+
+Dominic has a PhD in mathematics from Iowa State University, has over ten years of extensive software design and engineering experience in top companies such as Google, Databricks, and Boeing, and has spent much time, both professionally and personally, working in the area of computer and natural language design and implementation.
+
+Dominic's interests focus on the intersection of mathematics and languages and includes all aspects of language design and usage ranging from traditional parser design and lambda calculus (ranging from simple to dependent type theory), all of the way to deep learning and large language models.
+
+Dominic is particularly interested in how the design of a language's syntax and semantics shapes how concepts or applications can or cannot be easily expressed or implemented in that language.
+
+Any questions, comments, or feedback is greatly appreciated, and you can post feedback as an issue in the Mathlingua [GitHub repo](https://github.com/mathlore/mathlingua) or via email at *DominicKramer@gmail.com*.
+
+# The Language
+
+## Formulation Forms
+
+### Names
 
 ```yaml
 x
@@ -67,57 +103,57 @@ x?
 "a b"
 ```
 
-## Functions
+### Functions
 
 ```yaml
 f(x, y)
 ```
 
-## Infix Operators
+### Infix Operators
 
 ```yaml
 x * y
 ```
 
-## Prefix Operator
+### Prefix Operator
 
 ```yaml
 +x
 ```
 
-## Suffix Operator
+### Suffix Operator
 
 ```yaml
 x!
 ```
 
-## Tuples
+### Tuples
 
 ```yaml
 (x, y)
 ```
 
-## Conditional Sets
+### Conditional Sets
 
 ```yaml
 {x | ...}
 {f(x, y) | ...}
 ```
 
-## Functional Literal
+### Functional Literal
 
 ```yaml
 x |-> f(x)
 (x, y) |-> f(x, y)
 ```
 
-## Conditional Set Id Form
+### Conditional Set Id Form
 
 ```yaml
 [x]{x | f(x)...}
 ```
 
-## Colon Equals Form
+### Colon Equals Form
 
 ```yaml
 X := (a, b)
@@ -125,41 +161,41 @@ f(x) := y
 f(x) := (a, b)
 ```
 
-# Formulation Expressions
+## Formulation Expressions
 
-## Function Expression
+### Function Expression
 
 ```yaml
 f(x + y, z)
 (f + g)(x)
 ```
 
-## Function Literals
+### Function Literals
 
 ```yaml
 x |-> x + 1
 (x, y) |-> x + y
 ```
 
-## Tuples
+### Tuples
 
 ```yaml
 (x + y, z)
 ```
 
-## Groupings
+### Groupings
 
 ```yaml
 (x + y)
 ```
 
-## Invisible Groupings
+### Invisible Groupings
 
 ```yaml
 (:x + y:)
 ```
 
-## Conditional Set Expression
+### Conditional Set Expression
 
 TODO: update this to use the second |
 
@@ -169,7 +205,7 @@ TODO: update this to use the second |
 [x, y]{x + y | x, y is \real ; x > 0 ; y > 0}
 ```
 
-## Command Expressions
+### Command Expressions
 
 ```yaml
 \function:on{A}:to{B}
@@ -179,25 +215,25 @@ TODO: update this to use the second |
 \a.b.c[x, y]{x + y | x, y is \real ; x > 0 ; y < 0}
 ```
 
-## Prefix Operator
+### Prefix Operator
 
 ```yaml
 -x
 ```
 
-## Postfix Operator
+### Postfix Operator
 
 ```yaml
 x!
 ```
 
-## Infix Operator
+### Infix Operator
 
 ```yaml
 x + y
 ```
 
-## Is Expression
+### Is Expression
 
 TODO: Update this so the right-hand-side is exactly one type (i.e. `\x & \y` is not supported)
 
@@ -205,26 +241,26 @@ TODO: Update this so the right-hand-side is exactly one type (i.e. `\x & \y` is 
 x is \y
 ```
 
-## Also Expression
+### Also Expression
 
 ```yaml
 x also \a & \b
 ```
 
-## Equality
+### Equality
 
 ```yaml
 x = y
 x != y
 ```
 
-## Extends Expression
+### Extends Expression
 
 ```yaml
 x extends \y
 ```
 
-## As Expression
+### As Expression
 
 ```yaml
 x as \:y
@@ -243,7 +279,7 @@ Note: The `as` operator can be used twice to convert to another type so that the
 x as \:function as [a,b]{(a,b)|...}
 ```
 
-### Implicit Conversions
+#### Implicit Conversions
 
 A tuple will automatically cast to a tuple with fewer elements.  That is, if `X := (a, b, c)` then one can write `X is \something` where `\something` expects a tuple of the form `(x, y)`.
 
@@ -258,26 +294,26 @@ R also \commutative.ring.with.identity
 
 The `\commutative.ring.with.identity` expects to be of the form `(X, +, *, 0, 1)` but `\commutative.ring` only needs to be of the form `(X, +, *, 0)`.  This is ok because the `(X, +, *, 0, 1)` is cast as `(X, +, *, 0)` and the `\commutative.ring` definition only sets the types of `X`, `+`, `*`, and `0`.
 
-## Ordinal Call Expression
+### Ordinal Call Expression
 
 ```yaml
 x[1]
 x[i[k]]
 ```
 
-## Chain Expression
+### Chain Expression
 
 ```yaml
 (x + y).z.a.b
 ```
 
-## Select From Builtin
+### Select From Builtin
 
 ```yaml
 \\select{statement|specification}:from{x}
 ```
 
-## Signatures
+### Signatures
 
 A signature is a type without any types for the inputs specified.
 
@@ -285,7 +321,7 @@ A signature is a type without any types for the inputs specified.
 \:a.b.c:d:e
 ```
 
-## Types
+### Types
 
 ```yaml
 \:a.b.c:x{\x + \:a & \:b, \:c}:y{\:d}
@@ -295,51 +331,51 @@ A signature is a type without any types for the inputs specified.
 \:set \:to:/ \:set
 ```
 
-## Type Builtin
+### Type Builtin
 
 ```yaml
 \\type{\:set + \:group & \:ring}
 ```
 
-## Formulation Builtin
+### Formulation Builtin
 
 ```yaml
 \\formulation{expression | statement}
 ```
 
-## Boolean Builtin
+### Boolean Builtin
 
 ```yaml
 \\boolean
 ```
 
-## Boolean Value Builtin
+### Boolean Value Builtin
 
 ```yaml
 \\true
 \\false
 ```
 
-## Type-of Builtin
+### Type-of Builtin
 
 ```yaml
 \\type:of{x}
 ```
 
-## Map Builtin
+### Map Builtin
 
 ```yaml
 \\map{x[i]}:to{x[i] + 1}
 ```
 
-## Map Else Builtin
+### Map Else Builtin
 
 ```yaml
 \\map{x[i[k]]}:to{x[i[k]] + 1}:else{0}
 ```
 
 
-## Definition Of Builtins
+### Definition Of Builtins
 
 ```yaml
 \\definition:of{f}
@@ -351,25 +387,25 @@ A signature is a type without any types for the inputs specified.
 \\definition:of{A \subset/ B}:satisfies{\:some.thing::(some.label)}
 ```
 
-## Colon Equals Expression
+### Colon Equals Expression
 
 ```yaml
 f(x) := x + 1
 ```
 
-## Colon Arrow Expression
+### Colon Arrow Expression
 
 ```yaml
 x + y :=> x
 ```
 
-## Colon Dash Arrow Expression
+### Colon Dash Arrow Expression
 
 ```yaml
 x [.in.]: y :-> x; y
 ```
 
-## Enclosed Non-command Operator
+### Enclosed Non-command Operator
 
 TODO: Do not allow the form (. .)
 
@@ -394,7 +430,7 @@ Aliases expressions
 {.x.}
 ```
 
-## Non-enclosed Non-command Operator
+### Non-enclosed Non-command Operator
 
 ```yaml
 *
@@ -403,7 +439,7 @@ Aliases expressions
 +:
 ```
 
-## Infix Command Expression
+### Infix Command Expression
 
 TODO: do not allow the form \( )/
 
@@ -412,9 +448,9 @@ TODO: do not allow the form \( )/
 \[function:on{A}:to{B}]/
 ```
 
-# Ids
+## Ids
 
-## Command Id
+### Command Id
 
 ```yaml
 \function:on{A}:to{B}
@@ -422,25 +458,25 @@ TODO: do not allow the form \( )/
 \function:on{A}:to[x,y]{f(x,y)}@d{x}
 ```
 
-## Prefix Operator Id
+### Prefix Operator Id
 
 ```yaml
 -x
 ```
 
-## Postfix Operator Id
+### Postfix Operator Id
 
 ```yaml
 x!
 ```
 
-## Infix Operator Id
+### Infix Operator Id
 
 ```yaml
 x + y
 ```
 
-## Infix Command Operator Id
+### Infix Command Operator Id
 
 TODO: Do not allow the form \( )/
 
@@ -449,7 +485,7 @@ A \{subset}/ B
 A \[subset]/ B
 ```
 
-## Variadic
+### Variadic
 
 ```yaml
 x...
@@ -472,9 +508,9 @@ x... extends \a
 
 TODO: specify what `x... = y...` means.  In particular, `(a, b, c) = (x, y, z)` defaults to `a = x` and `b = y` and `c = z`.
 
-# Structural Language
+## Structural Language
 
-## Overview
+### Overview
 
 ```yaml
 Clause ::= <Text>
@@ -495,7 +531,7 @@ Clause ::= <Text>
          | declare:
 ```
 
-## Clauses
+### Clauses
 
 ```yaml
 equivalently: <Clause>+
@@ -579,7 +615,7 @@ suchThat?: <Clause>+
 then: <Clause>+
 ```
 
-## Definitions
+### Definitions
 
 ```yaml
 Captures: <Formulation>+
@@ -636,7 +672,7 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
-## Results
+### Results
 
 ```yaml
 Axiom:
@@ -723,7 +759,7 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
-## Resources
+### Resources
 
 ```yaml
 Resource: <ResourceKind>+
@@ -808,7 +844,7 @@ journal: <Text>
 year: <Text>
 ```
 
-## Configuration
+### Configuration
 
 ```yaml
 Specify: <SpecifyKind>+
@@ -848,7 +884,7 @@ zero:
 means: <Spec>
 ```
 
-## People
+### People
 
 ```yaml
 Person: <PersonKind>+
@@ -868,7 +904,7 @@ name: <Text>+
 biography: <Text>
 ```
 
-## Documented
+### Documented
 
 ```yaml
 DocumentedKind ::= overview:
@@ -900,7 +936,7 @@ TODO: specify that writing: excepts a text of the form "... as ..."
 writing: <Text>+
 ```
 
-## Provides
+### Provides
 
 ```yaml
 symbol: <Alias>
@@ -925,7 +961,7 @@ where?: <Spec>+
 through?: <Formulation>
 ```
 
-## Justified
+### Justified
 
 ```yaml
 JustifiedKind ::= by:
@@ -941,9 +977,9 @@ label: <Text>
 by: <ProofItem>+
 ```
 
-## Proofs
+### Proofs
 
-### Structuring Constructs
+#### Structuring Constructs
 
 ```yaml
 ProofItemKind ::= block:
@@ -1024,7 +1060,7 @@ forInduction: <ProofItemKind>+
 forContrapositive: <ProofItemKind>+
 ```
 
-### Introductory Constructs
+#### Introductory Constructs
 
 ```yaml
 claim:
@@ -1051,7 +1087,7 @@ toShow: <ProofItemKind>+
 observe: <ProofItemKind>+
 ```
 
-### Symbol Introduction Constructs
+#### Symbol Introduction Constructs
 
 ```yaml
 exists: <Target>+
@@ -1083,7 +1119,7 @@ suchThat?: <Clause>+
 then: <ProofItemKind>+
 ```
 
-### Reasoning Constructs
+#### Reasoning Constructs
 
 ```yaml
 because: <ProofItemKind>+
@@ -1095,7 +1131,7 @@ by: <ProofItemKind>+
 then: <ProofItemKind>+
 ```
 
-### Flow of Thought Constructs
+#### Flow of Thought Constructs
 
 ```yaml
 hence: <ProofItemKind>+
@@ -1127,7 +1163,7 @@ thus: <ProofItemKind>+
 by?:/because: <ProofItemKind>+
 ```
 
-### Logical Constructs
+#### Logical Constructs
 
 ```yaml
 oneOf: <ProofItemKind>+
@@ -1159,7 +1195,7 @@ then: <ProofItemKind>+
 not: <ProofItemKind>
 ```
 
-### Terminating Constructs
+#### Terminating Constructs
 
 ```yaml
 absurd:
@@ -1177,9 +1213,9 @@ done:
 qed:
 ```
 
-# Labels
+## Labels
 
-## Declaring
+### Declaring
 
 ```yaml
 '{:{: x + 1 :}(1) + y:}(some.label)'
@@ -1202,7 +1238,7 @@ where: '...'
 suchThat: '...'
 ```
 
-## Referencing
+### Referencing
 
 TODO: Update this
 
@@ -1216,9 +1252,9 @@ In addition to the following, the `\\definition:of:satisfies` builtin can be use
 \some.theorem:given{x, y}::(some.label)
 ```
 
-# Writing
+## Writing
 
-## Overview
+### Overview
 
 ```yaml
 "target as latex"
@@ -1227,9 +1263,9 @@ In addition to the following, the `\\definition:of:satisfies` builtin can be use
 ```
 writing: uses the same replacement rules as written:
 
-# Written
+## Written
 
-## Overview
+### Overview
 
 ```yaml
 x?
@@ -1242,19 +1278,19 @@ x?{... infix ...}
 x? is the same as x-?
 ```
 
-# Sigils
+## Sigils
 
-# Order of operations
+## Order of operations
 
-# Type checking
+## Type checking
 
-# Symbol Resolution
+## Symbol Resolution
 
-# Encoded As
+## Encoded As
 
-# Viewed As
+## Viewed As
 
-# f(x, y, z) interpretation
+## f(x, y, z) interpretation
 
 The following all mean the same:
 ```yaml
@@ -1265,10 +1301,10 @@ f(x, y)
 ```
 that is the tuple is automatically collapsed.  This aligns with common math usage.  Note: this only works for function calls.  That is `\foo{(x, y)}` and `\foo{x, y}` are **not** the same.
 
-# Functions and Operators
+## Functions and Operators
 
 The forms `x * y` and `"*"(x, y)` are treated as the same.  The same is true for `-x` and `"-"(x)` as well as `x!` and `"!"(x)`.
 
 This means if `-x` and `x-` are both operators in scope then the form `"-"(x)` cannot be used since it is ambiguous.  In this case, one of `-x` and `x-` should be changed, or an alias made to distinguish one form to another if `"-"(x)` needs to be used.
 
-# Symbol Resolution
+## Symbol Resolution

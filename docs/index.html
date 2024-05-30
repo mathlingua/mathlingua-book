@@ -91,6 +91,14 @@
       <li><a href="#existing-math-collections"
       id="toc-existing-math-collections">Existing Math
       Collections</a></li>
+      <li><a href="#getting-started" id="toc-getting-started">Getting
+      Started</a></li>
+      <li><a href="#the-mathlingua-tooling"
+      id="toc-the-mathlingua-tooling">The Mathlingua Tooling</a></li>
+      <li><a href="#about-the-author" id="toc-about-the-author">About
+      the Author</a></li>
+      <li><a href="#the-language" id="toc-the-language">The Language</a>
+      <ul>
       <li><a href="#formulation-forms"
       id="toc-formulation-forms">Formulation Forms</a>
       <ul>
@@ -142,11 +150,7 @@
       <li><a href="#extends-expression"
       id="toc-extends-expression">Extends Expression</a></li>
       <li><a href="#as-expression" id="toc-as-expression">As
-      Expression</a>
-      <ul>
-      <li><a href="#implicit-conversions"
-      id="toc-implicit-conversions">Implicit Conversions</a></li>
-      </ul></li>
+      Expression</a></li>
       <li><a href="#ordinal-call-expression"
       id="toc-ordinal-call-expression">Ordinal Call Expression</a></li>
       <li><a href="#chain-expression" id="toc-chain-expression">Chain
@@ -217,25 +221,7 @@
       <li><a href="#documented" id="toc-documented">Documented</a></li>
       <li><a href="#provides" id="toc-provides">Provides</a></li>
       <li><a href="#justified" id="toc-justified">Justified</a></li>
-      <li><a href="#proofs" id="toc-proofs">Proofs</a>
-      <ul>
-      <li><a href="#structuring-constructs"
-      id="toc-structuring-constructs">Structuring Constructs</a></li>
-      <li><a href="#introductory-constructs"
-      id="toc-introductory-constructs">Introductory Constructs</a></li>
-      <li><a href="#symbol-introduction-constructs"
-      id="toc-symbol-introduction-constructs">Symbol Introduction
-      Constructs</a></li>
-      <li><a href="#reasoning-constructs"
-      id="toc-reasoning-constructs">Reasoning Constructs</a></li>
-      <li><a href="#flow-of-thought-constructs"
-      id="toc-flow-of-thought-constructs">Flow of Thought
-      Constructs</a></li>
-      <li><a href="#logical-constructs"
-      id="toc-logical-constructs">Logical Constructs</a></li>
-      <li><a href="#terminating-constructs"
-      id="toc-terminating-constructs">Terminating Constructs</a></li>
-      </ul></li>
+      <li><a href="#proofs" id="toc-proofs">Proofs</a></li>
       </ul></li>
       <li><a href="#labels" id="toc-labels">Labels</a>
       <ul>
@@ -266,6 +252,7 @@
       id="toc-functions-and-operators">Functions and Operators</a></li>
       <li><a href="#symbol-resolution-1"
       id="toc-symbol-resolution-1">Symbol Resolution</a></li>
+      </ul></li>
       </ul>
     </nav>
   
@@ -431,101 +418,172 @@
         using a name that is not defined anywhere or refer to a
         definition that doesn’t exist, and it is up to manual review to
         catch those mistakes.</p>
-        <hr />
-        <h1 id="formulation-forms">Formulation Forms</h1>
-        <h2 id="names">Names</h2>
+        <h1 id="getting-started">Getting Started</h1>
+        <p>Mathlore is the site that hosts the community grown
+        collection of mathematical knowledge encoded in the Mathlingua
+        language. You can access it at <a
+        href="https://mathlore.org">mathlore.org</a>. Contributions to
+        Mathlore are welcome from everyone.</p>
+        <p>To get started first <a
+        href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">fork</a>
+        the <a
+        href="https://github.com/mathlingua/mathlore-content">repository</a>.
+        Next, download the latest release of the Mathlingua command line
+        tool from the <a
+        href="https://github.com/mathlingua/mathlingua/releases">releases
+        page</a>, rename it to <code>mlg</code>, and ensure it is in
+        your <code>PATH</code>.</p>
+        <p>Last, you can use whatever editor you like to edit Mathlingua
+        code. However, if you use <a
+        href="https://code.visualstudio.com/">Visual Studio Code</a> you
+        can <a
+        href="https://code.visualstudio.com/docs/editor/extension-marketplace#_install-an-extension">install</a>
+        the <a
+        href="https://marketplace.visualstudio.com/items?itemName=dominickramer.mathlingua-language-support">Mathlingua
+        Language Support</a> extension that provides syntax
+        highlighting, autocompletion, and error diagnostics provided by
+        <code>mlg</code>.</p>
+        <blockquote>
+        <p>Mathlingua files have the <code>.math</code> extension and
+        the <code>mathlingua-language-support</code> extension is
+        designed to analyze any files with the <code>.math</code>
+        extension.</p>
+        </blockquote>
+        <h1 id="the-mathlingua-tooling">The Mathlingua Tooling</h1>
+        <p><code>mlg</code> is the Mathlingua command line tools used to
+        interact with collections of Mathlingua documents. It uses the
+        format <code>mlg &lt;command&gt;</code> where
+        <code>&lt;command&gt;</code> is an action to perform:</p>
+        <ul>
+        <li><code>mlg check</code>: Analyzes all <code>.math</code>
+        files in the current working directory recursively for any
+        errors and prints them to the screen. Optionally, if directory
+        or <code>.math</code> file name(s) are specified, only errors
+        for those files are printed to the screen.</li>
+        <li><code>mlg view</code>: Serves the current directory’s
+        Mathlingua files at <code>http://localhost:8080</code> so that
+        they can be viewed.</li>
+        <li><code>mlg version</code>: Prints the Mathlingua
+        version.</li>
+        <li><code>mlg help</code>: Prints information about how to use
+        <code>mlg</code>.</li>
+        </ul>
+        <h1 id="about-the-author">About the Author</h1>
+        <p>Mathlingua is designed and implemented by Dominic Kramer.</p>
+        <p>Dominic has a PhD in mathematics from Iowa State University,
+        has over ten years of extensive software design and engineering
+        experience in top companies such as Google, Databricks, and
+        Boeing, and has spent much time, both professionally and
+        personally, working in the area of computer and natural language
+        design and implementation.</p>
+        <p>Dominic’s interests focus on the intersection of mathematics
+        and languages and includes all aspects of language design and
+        usage ranging from traditional parser design and lambda calculus
+        (ranging from simple to dependent type theory), all of the way
+        to deep learning and large language models.</p>
+        <p>Dominic is particularly interested in how the design of a
+        language’s syntax and semantics shapes how concepts or
+        applications can or cannot be easily expressed or implemented in
+        that language.</p>
+        <p>Any questions, comments, or feedback is greatly appreciated,
+        and you can post feedback as an issue in the Mathlingua <a
+        href="https://github.com/mathlore/mathlingua">GitHub repo</a> or
+        via email at <em>DominicKramer@gmail.com</em>.</p>
+        <h1 id="the-language">The Language</h1>
+        <h2 id="formulation-forms">Formulation Forms</h2>
+        <h3 id="names">Names</h3>
         <div class="sourceCode" id="cb1"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">x</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">x?</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a b&quot;</span></span></code></pre></div>
-        <h2 id="functions">Functions</h2>
+        <h3 id="functions">Functions</h3>
         <div class="sourceCode" id="cb2"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">f(x, y)</span></span></code></pre></div>
-        <h2 id="infix-operators">Infix Operators</h2>
+        <h3 id="infix-operators">Infix Operators</h3>
         <div class="sourceCode" id="cb3"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">x * y</span></span></code></pre></div>
-        <h2 id="prefix-operator">Prefix Operator</h2>
+        <h3 id="prefix-operator">Prefix Operator</h3>
         <div class="sourceCode" id="cb4"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">+x</span></span></code></pre></div>
-        <h2 id="suffix-operator">Suffix Operator</h2>
+        <h3 id="suffix-operator">Suffix Operator</h3>
         <div class="sourceCode" id="cb5"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">x!</span></span></code></pre></div>
-        <h2 id="tuples">Tuples</h2>
+        <h3 id="tuples">Tuples</h3>
         <div class="sourceCode" id="cb6"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">(x, y)</span></span></code></pre></div>
-        <h2 id="conditional-sets">Conditional Sets</h2>
+        <h3 id="conditional-sets">Conditional Sets</h3>
         <div class="sourceCode" id="cb7"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span><span class="at">x | ...</span><span class="kw">}</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span><span class="at">f(x</span><span class="kw">,</span><span class="at"> y) | ...</span><span class="kw">}</span></span></code></pre></div>
-        <h2 id="functional-literal">Functional Literal</h2>
+        <h3 id="functional-literal">Functional Literal</h3>
         <div class="sourceCode" id="cb8"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">x |-&gt; f(x)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">(x, y) |-&gt; f(x, y)</span></span></code></pre></div>
-        <h2 id="conditional-set-id-form">Conditional Set Id Form</h2>
+        <h3 id="conditional-set-id-form">Conditional Set Id Form</h3>
         <div class="sourceCode" id="cb9"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">x</span><span class="kw">]</span><span class="at">{x | f(x)...}</span></span></code></pre></div>
-        <h2 id="colon-equals-form">Colon Equals Form</h2>
+        <h3 id="colon-equals-form">Colon Equals Form</h3>
         <div class="sourceCode" id="cb10"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="at">X := (a, b)</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="at">f(x) := y</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">f(x) := (a, b)</span></span></code></pre></div>
-        <h1 id="formulation-expressions">Formulation Expressions</h1>
-        <h2 id="function-expression">Function Expression</h2>
+        <h2 id="formulation-expressions">Formulation Expressions</h2>
+        <h3 id="function-expression">Function Expression</h3>
         <div class="sourceCode" id="cb11"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">f(x + y, z)</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">(f + g)(x)</span></span></code></pre></div>
-        <h2 id="function-literals">Function Literals</h2>
+        <h3 id="function-literals">Function Literals</h3>
         <div class="sourceCode" id="cb12"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="at">x |-&gt; x + 1</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">(x, y) |-&gt; x + y</span></span></code></pre></div>
-        <h2 id="tuples-1">Tuples</h2>
+        <h3 id="tuples-1">Tuples</h3>
         <div class="sourceCode" id="cb13"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="at">(x + y, z)</span></span></code></pre></div>
-        <h2 id="groupings">Groupings</h2>
+        <h3 id="groupings">Groupings</h3>
         <div class="sourceCode" id="cb14"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">(x + y)</span></span></code></pre></div>
-        <h2 id="invisible-groupings">Invisible Groupings</h2>
+        <h3 id="invisible-groupings">Invisible Groupings</h3>
         <div class="sourceCode" id="cb15"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="at">(:x + y:)</span></span></code></pre></div>
-        <h2 id="conditional-set-expression">Conditional Set
-        Expression</h2>
+        <h3 id="conditional-set-expression">Conditional Set
+        Expression</h3>
         <p>TODO: update this to use the second |</p>
         <div class="sourceCode" id="cb16"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">x</span><span class="kw">]</span><span class="at">{(x, x+1) | x is \real ; x &gt; 0}</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">x</span><span class="kw">]</span><span class="at">{(x, x+1) | x is \real}</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">x</span><span class="kw">,</span><span class="at"> </span><span class="ch">y</span><span class="kw">]</span><span class="at">{x + y | x, y is \real ; x &gt; 0 ; y &gt; 0}</span></span></code></pre></div>
-        <h2 id="command-expressions">Command Expressions</h2>
+        <h3 id="command-expressions">Command Expressions</h3>
         <div class="sourceCode" id="cb17"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="at">\function:on{A}:to{B}</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="at">\a.b.c{x, y}</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="at">\a.b.c(x, y)</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="at">\a.b.c[x, y]{x + y}</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="at">\a.b.c[x, y]{x + y | x, y is \real ; x &gt; 0 ; y &lt; 0}</span></span></code></pre></div>
-        <h2 id="prefix-operator-1">Prefix Operator</h2>
+        <h3 id="prefix-operator-1">Prefix Operator</h3>
         <div class="sourceCode" id="cb18"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="at">-x</span></span></code></pre></div>
-        <h2 id="postfix-operator">Postfix Operator</h2>
+        <h3 id="postfix-operator">Postfix Operator</h3>
         <div class="sourceCode" id="cb19"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="at">x!</span></span></code></pre></div>
-        <h2 id="infix-operator">Infix Operator</h2>
+        <h3 id="infix-operator">Infix Operator</h3>
         <div class="sourceCode" id="cb20"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="at">x + y</span></span></code></pre></div>
-        <h2 id="is-expression">Is Expression</h2>
+        <h3 id="is-expression">Is Expression</h3>
         <p>TODO: Update this so the right-hand-side is exactly one type
         (i.e. <code>\x &amp; \y</code> is not supported)</p>
         <div class="sourceCode" id="cb21"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="at">x is \y</span></span></code></pre></div>
-        <h2 id="also-expression">Also Expression</h2>
+        <h3 id="also-expression">Also Expression</h3>
         <div class="sourceCode" id="cb22"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="at">x also \a &amp; \b</span></span></code></pre></div>
-        <h2 id="equality">Equality</h2>
+        <h3 id="equality">Equality</h3>
         <div class="sourceCode" id="cb23"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="at">x = y</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="at">x != y</span></span></code></pre></div>
-        <h2 id="extends-expression">Extends Expression</h2>
+        <h3 id="extends-expression">Extends Expression</h3>
         <div class="sourceCode" id="cb24"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="at">x extends \y</span></span></code></pre></div>
-        <h2 id="as-expression">As Expression</h2>
+        <h3 id="as-expression">As Expression</h3>
         <div class="sourceCode" id="cb25"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="at">x as \:y</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="at">x as (a, b, c)</span></span></code></pre></div>
@@ -551,7 +609,7 @@
         changed.</p>
         <div class="sourceCode" id="cb26"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="at">x as \:function as [a,b]{(a,b)|...}</span></span></code></pre></div>
-        <h3 id="implicit-conversions">Implicit Conversions</h3>
+        <h4 id="implicit-conversions">Implicit Conversions</h4>
         <p>A tuple will automatically cast to a tuple with fewer
         elements. That is, if <code>X := (a, b, c)</code> then one can
         write <code>X is \something</code> where <code>\something</code>
@@ -571,51 +629,51 @@
         <code>(X, +, *, 0)</code> and the <code>\commutative.ring</code>
         definition only sets the types of <code>X</code>,
         <code>+</code>, <code>*</code>, and <code>0</code>.</p>
-        <h2 id="ordinal-call-expression">Ordinal Call Expression</h2>
+        <h3 id="ordinal-call-expression">Ordinal Call Expression</h3>
         <div class="sourceCode" id="cb28"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="at">x[1]</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="at">x[i[k]]</span></span></code></pre></div>
-        <h2 id="chain-expression">Chain Expression</h2>
+        <h3 id="chain-expression">Chain Expression</h3>
         <div class="sourceCode" id="cb29"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="at">(x + y).z.a.b</span></span></code></pre></div>
-        <h2 id="select-from-builtin">Select From Builtin</h2>
+        <h3 id="select-from-builtin">Select From Builtin</h3>
         <div class="sourceCode" id="cb30"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\select{statement|specification}:from{x}</span></span></code></pre></div>
-        <h2 id="signatures">Signatures</h2>
+        <h3 id="signatures">Signatures</h3>
         <p>A signature is a type without any types for the inputs
         specified.</p>
         <div class="sourceCode" id="cb31"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="at">\:a.b.c:d:e</span></span></code></pre></div>
-        <h2 id="types">Types</h2>
+        <h3 id="types">Types</h3>
         <div class="sourceCode" id="cb32"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="at">\:a.b.c:x{\x + \:a &amp; \:b, \:c}:y{\:d}</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="at">\:continuous.function:on{\:set}:to{\:set}</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="at">\:continuous.function:on{?}:to{?}</span></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="at">(\:set &amp; \:group) \:to:/ \:set</span></span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="at">\:set \:to:/ \:set</span></span></code></pre></div>
-        <h2 id="type-builtin">Type Builtin</h2>
+        <h3 id="type-builtin">Type Builtin</h3>
         <div class="sourceCode" id="cb33"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\type{\:set + \:group &amp; \:ring}</span></span></code></pre></div>
-        <h2 id="formulation-builtin">Formulation Builtin</h2>
+        <h3 id="formulation-builtin">Formulation Builtin</h3>
         <div class="sourceCode" id="cb34"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\formulation{expression | statement}</span></span></code></pre></div>
-        <h2 id="boolean-builtin">Boolean Builtin</h2>
+        <h3 id="boolean-builtin">Boolean Builtin</h3>
         <div class="sourceCode" id="cb35"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\boolean</span></span></code></pre></div>
-        <h2 id="boolean-value-builtin">Boolean Value Builtin</h2>
+        <h3 id="boolean-value-builtin">Boolean Value Builtin</h3>
         <div class="sourceCode" id="cb36"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\true</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="at">\\false</span></span></code></pre></div>
-        <h2 id="type-of-builtin">Type-of Builtin</h2>
+        <h3 id="type-of-builtin">Type-of Builtin</h3>
         <div class="sourceCode" id="cb37"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\type:of{x}</span></span></code></pre></div>
-        <h2 id="map-builtin">Map Builtin</h2>
+        <h3 id="map-builtin">Map Builtin</h3>
         <div class="sourceCode" id="cb38"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\map{x[i]}:to{x[i] + 1}</span></span></code></pre></div>
-        <h2 id="map-else-builtin">Map Else Builtin</h2>
+        <h3 id="map-else-builtin">Map Else Builtin</h3>
         <div class="sourceCode" id="cb39"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\map{x[i[k]]}:to{x[i[k]] + 1}:else{0}</span></span></code></pre></div>
-        <h2 id="definition-of-builtins">Definition Of Builtins</h2>
+        <h3 id="definition-of-builtins">Definition Of Builtins</h3>
         <div class="sourceCode" id="cb40"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{f}</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{f}:satisfies{\:continuous.function:on:to}</span></span>
@@ -624,18 +682,18 @@
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{f}:satisfies{\:continuous.function:on{A}:to{B}::(some.label)}</span></span>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{A \subset/ B}:satisfies{\:some.thing}</span></span>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="at">\\definition:of{A \subset/ B}:satisfies{\:some.thing::(some.label)}</span></span></code></pre></div>
-        <h2 id="colon-equals-expression">Colon Equals Expression</h2>
+        <h3 id="colon-equals-expression">Colon Equals Expression</h3>
         <div class="sourceCode" id="cb41"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="at">f(x) := x + 1</span></span></code></pre></div>
-        <h2 id="colon-arrow-expression">Colon Arrow Expression</h2>
+        <h3 id="colon-arrow-expression">Colon Arrow Expression</h3>
         <div class="sourceCode" id="cb42"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="at">x + y :=&gt; x</span></span></code></pre></div>
-        <h2 id="colon-dash-arrow-expression">Colon Dash Arrow
-        Expression</h2>
+        <h3 id="colon-dash-arrow-expression">Colon Dash Arrow
+        Expression</h3>
         <div class="sourceCode" id="cb43"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x [.in.]</span><span class="kw">:</span><span class="at"> y :-&gt; x; y</span></span></code></pre></div>
-        <h2 id="enclosed-non-command-operator">Enclosed Non-command
-        Operator</h2>
+        <h3 id="enclosed-non-command-operator">Enclosed Non-command
+        Operator</h3>
         <p>TODO: Do not allow the form (. .)</p>
         <p>TODO: Disallow the forms:</p>
         <pre><code>[.in.]
@@ -649,40 +707,40 @@
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="at">:{.x.}</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span><span class="at">.x.</span><span class="kw">}</span></span></code></pre></div>
-        <h2 id="non-enclosed-non-command-operator">Non-enclosed
-        Non-command Operator</h2>
+        <h3 id="non-enclosed-non-command-operator">Non-enclosed
+        Non-command Operator</h3>
         <div class="sourceCode" id="cb47"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="at">*</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="at">++</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="at">:+</span></span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">+</span><span class="kw">:</span></span></code></pre></div>
-        <h2 id="infix-command-expression">Infix Command Expression</h2>
+        <h3 id="infix-command-expression">Infix Command Expression</h3>
         <p>TODO: do not allow the form ( )/</p>
         <div class="sourceCode" id="cb48"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="at">\{function:on{A}:to{B}}/</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="at">\[function:on{A}:to{B}]/</span></span></code></pre></div>
-        <h1 id="ids">Ids</h1>
-        <h2 id="command-id">Command Id</h2>
+        <h2 id="ids">Ids</h2>
+        <h3 id="command-id">Command Id</h3>
         <div class="sourceCode" id="cb49"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="at">\function:on{A}:to{B}</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="at">\function:on{A}:to[x,y]{f(x,y)}@{x}</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="at">\function:on{A}:to[x,y]{f(x,y)}@d{x}</span></span></code></pre></div>
-        <h2 id="prefix-operator-id">Prefix Operator Id</h2>
+        <h3 id="prefix-operator-id">Prefix Operator Id</h3>
         <div class="sourceCode" id="cb50"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="at">-x</span></span></code></pre></div>
-        <h2 id="postfix-operator-id">Postfix Operator Id</h2>
+        <h3 id="postfix-operator-id">Postfix Operator Id</h3>
         <div class="sourceCode" id="cb51"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="at">x!</span></span></code></pre></div>
-        <h2 id="infix-operator-id">Infix Operator Id</h2>
+        <h3 id="infix-operator-id">Infix Operator Id</h3>
         <div class="sourceCode" id="cb52"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="at">x + y</span></span></code></pre></div>
-        <h2 id="infix-command-operator-id">Infix Command Operator
-        Id</h2>
+        <h3 id="infix-command-operator-id">Infix Command Operator
+        Id</h3>
         <p>TODO: Do not allow the form ( )/</p>
         <div class="sourceCode" id="cb53"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="at">A \{subset}/ B</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="at">A \[subset]/ B</span></span></code></pre></div>
-        <h2 id="variadic">Variadic</h2>
+        <h3 id="variadic">Variadic</h3>
         <div class="sourceCode" id="cb54"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="at">x...</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="at">x[i...]</span></span>
@@ -704,8 +762,8 @@
         particular, <code>(a, b, c) = (x, y, z)</code> defaults to
         <code>a = x</code> and <code>b = y</code> and
         <code>c = z</code>.</p>
-        <h1 id="structural-language">Structural Language</h1>
-        <h2 id="overview">Overview</h2>
+        <h2 id="structural-language">Structural Language</h2>
+        <h3 id="overview">Overview</h3>
         <div class="sourceCode" id="cb55"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="at">Clause ::= &lt;Text&gt;</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="at">         | &lt;Formulation&gt;</span></span>
@@ -723,7 +781,7 @@
 <span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| when</span><span class="kw">:</span></span>
 <span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| piecewise</span><span class="kw">:</span></span>
 <span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">| declare</span><span class="kw">:</span></span></code></pre></div>
-        <h2 id="clauses">Clauses</h2>
+        <h3 id="clauses">Clauses</h3>
         <div class="sourceCode" id="cb56"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">equivalently</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
         <div class="sourceCode" id="cb57"><pre
@@ -772,7 +830,7 @@
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
 <span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
 <span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span></code></pre></div>
-        <h2 id="definitions">Definitions</h2>
+        <h3 id="definitions">Definitions</h3>
         <div class="sourceCode" id="cb69"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Captures</span><span class="kw">:</span><span class="at"> &lt;Formulation&gt;+</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Justified?</span><span class="kw">:</span><span class="at"> &lt;JustifiedKind&gt;+</span></span>
@@ -820,7 +878,7 @@
 <span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
 <span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
 <span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
-        <h2 id="results">Results</h2>
+        <h3 id="results">Results</h3>
         <div class="sourceCode" id="cb73"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Axiom</span><span class="kw">:</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">given?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
@@ -896,7 +954,7 @@
 <span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Aliases?</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;+</span></span>
 <span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Writing?</span><span class="kw">:</span><span class="at"> &lt;WritingTextItem&gt;+</span></span>
 <span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
-        <h2 id="resources">Resources</h2>
+        <h3 id="resources">Resources</h3>
         <div class="sourceCode" id="cb78"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Resource</span><span class="kw">:</span><span class="at"> &lt;ResourceKind&gt;+</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
@@ -946,7 +1004,7 @@
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">journal</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
         <div class="sourceCode" id="cb94"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
-        <h2 id="configuration">Configuration</h2>
+        <h3 id="configuration">Configuration</h3>
         <div class="sourceCode" id="cb95"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Specify</span><span class="kw">:</span><span class="at"> &lt;SpecifyKind&gt;+</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
@@ -971,7 +1029,7 @@
         <div class="sourceCode" id="cb101"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zero</span><span class="kw">:</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">means</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;</span></span></code></pre></div>
-        <h2 id="people">People</h2>
+        <h3 id="people">People</h3>
         <div class="sourceCode" id="cb102"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Person</span><span class="kw">:</span><span class="at"> &lt;PersonKind&gt;+</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Id?</span><span class="kw">:</span><span class="at"> &lt;IdTextItem&gt;</span></span></code></pre></div>
@@ -982,7 +1040,7 @@
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
         <div class="sourceCode" id="cb105"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biography</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span></code></pre></div>
-        <h2 id="documented">Documented</h2>
+        <h3 id="documented">Documented</h3>
         <div class="sourceCode" id="cb106"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="at">DocumentedKind :</span><span class="fu">:= overview</span><span class="kw">:</span></span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="at">                 </span><span class="fu">| related</span><span class="kw">:</span></span>
@@ -1001,7 +1059,7 @@
         …”</p>
         <div class="sourceCode" id="cb111"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writing</span><span class="kw">:</span><span class="at"> &lt;Text&gt;+</span></span></code></pre></div>
-        <h2 id="provides">Provides</h2>
+        <h3 id="provides">Provides</h3>
         <div class="sourceCode" id="cb112"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">symbol</span><span class="kw">:</span><span class="at"> &lt;Alias&gt;</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">replaces?</span><span class="kw">:</span><span class="at"> &lt;Formulation&gt;</span></span>
@@ -1019,7 +1077,7 @@
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
 <span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
 <span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="fu">through?</span><span class="kw">:</span><span class="at"> &lt;Formulation&gt;</span></span></code></pre></div>
-        <h2 id="justified">Justified</h2>
+        <h3 id="justified">Justified</h3>
         <div class="sourceCode" id="cb115"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="at">JustifiedKind :</span><span class="fu">:= by</span><span class="kw">:</span></span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| label</span><span class="kw">:</span></span></code></pre></div>
@@ -1028,8 +1086,8 @@
         <div class="sourceCode" id="cb117"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">label</span><span class="kw">:</span><span class="at"> &lt;Text&gt;</span></span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span><span class="kw">:</span><span class="at"> &lt;ProofItem&gt;+</span></span></code></pre></div>
-        <h2 id="proofs">Proofs</h2>
-        <h3 id="structuring-constructs">Structuring Constructs</h3>
+        <h3 id="proofs">Proofs</h3>
+        <h4 id="structuring-constructs">Structuring Constructs</h4>
         <div class="sourceCode" id="cb118"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="at">ProofItemKind :</span><span class="fu">:= block</span><span class="kw">:</span></span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">| remark</span><span class="kw">:</span></span>
@@ -1089,7 +1147,7 @@
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forInduction</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
         <div class="sourceCode" id="cb127"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forContrapositive</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
-        <h3 id="introductory-constructs">Introductory Constructs</h3>
+        <h4 id="introductory-constructs">Introductory Constructs</h4>
         <div class="sourceCode" id="cb128"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">claim</span><span class="kw">:</span></span>
 <span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">given?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
@@ -1107,8 +1165,8 @@
         <div class="sourceCode" id="cb131"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toShow</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
 <span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">observe</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
-        <h3 id="symbol-introduction-constructs">Symbol Introduction
-        Constructs</h3>
+        <h4 id="symbol-introduction-constructs">Symbol Introduction
+        Constructs</h4>
         <div class="sourceCode" id="cb132"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
 <span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">using?</span><span class="kw">:</span><span class="at"> &lt;Target&gt;+</span></span>
@@ -1131,15 +1189,15 @@
 <span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where?</span><span class="kw">:</span><span class="at"> &lt;Spec&gt;+</span></span>
 <span id="cb135-4"><a href="#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat?</span><span class="kw">:</span><span class="at"> &lt;Clause&gt;+</span></span>
 <span id="cb135-5"><a href="#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
-        <h3 id="reasoning-constructs">Reasoning Constructs</h3>
+        <h4 id="reasoning-constructs">Reasoning Constructs</h4>
         <div class="sourceCode" id="cb136"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">because</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
 <span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
         <div class="sourceCode" id="cb137"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
 <span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
-        <h3 id="flow-of-thought-constructs">Flow of Thought
-        Constructs</h3>
+        <h4 id="flow-of-thought-constructs">Flow of Thought
+        Constructs</h4>
         <div class="sourceCode" id="cb138"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hence</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
 <span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">by?/because?</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
@@ -1158,7 +1216,7 @@
         <div class="sourceCode" id="cb143"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">thus</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span>
 <span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="at">by?</span><span class="fu">:/because</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
-        <h3 id="logical-constructs">Logical Constructs</h3>
+        <h4 id="logical-constructs">Logical Constructs</h4>
         <div class="sourceCode" id="cb144"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneOf</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
         <div class="sourceCode" id="cb145"><pre
@@ -1175,7 +1233,7 @@
 <span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">then</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;+</span></span></code></pre></div>
         <div class="sourceCode" id="cb150"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">not</span><span class="kw">:</span><span class="at"> &lt;ProofItemKind&gt;</span></span></code></pre></div>
-        <h3 id="terminating-constructs">Terminating Constructs</h3>
+        <h4 id="terminating-constructs">Terminating Constructs</h4>
         <div class="sourceCode" id="cb151"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">absurd</span><span class="kw">:</span></span></code></pre></div>
         <div class="sourceCode" id="cb152"><pre
@@ -1184,8 +1242,8 @@
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">done</span><span class="kw">:</span></span></code></pre></div>
         <div class="sourceCode" id="cb154"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qed</span><span class="kw">:</span></span></code></pre></div>
-        <h1 id="labels">Labels</h1>
-        <h2 id="declaring">Declaring</h2>
+        <h2 id="labels">Labels</h2>
+        <h3 id="declaring">Declaring</h3>
         <div class="sourceCode" id="cb155"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;{:{: x + 1 :}(1) + y:}(some.label)&#39;</span></span></code></pre></div>
         <div class="sourceCode" id="cb156"><pre
@@ -1198,7 +1256,7 @@
 <span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span><span class="kw">:</span><span class="at"> x</span></span>
 <span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="fu">where</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;...&#39;</span></span>
 <span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="fu">suchThat</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;...&#39;</span></span></code></pre></div>
-        <h2 id="referencing">Referencing</h2>
+        <h3 id="referencing">Referencing</h3>
         <p>TODO: Update this</p>
         <p>In addition to the following, the
         <code>\\definition:of:satisfies</code> builtin can be used as a
@@ -1209,15 +1267,15 @@
 <span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="at">\(some.label)</span></span>
 <span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="at">\some.theorem::(some.label)</span></span>
 <span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="at">\some.theorem:given{x, y}::(some.label)</span></span></code></pre></div>
-        <h1 id="writing">Writing</h1>
-        <h2 id="overview-1">Overview</h2>
+        <h2 id="writing">Writing</h2>
+        <h3 id="overview-1">Overview</h3>
         <div class="sourceCode" id="cb160"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;target as latex&quot;</span></span>
 <span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;epsilon as </span><span class="sc">\v</span><span class="st">arepsilon&quot;</span></span>
 <span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a(i) as a?_{i?}&quot;</span></span></code></pre></div>
         <p>writing: uses the same replacement rules as written:</p>
-        <h1 id="written">Written</h1>
-        <h2 id="overview-2">Overview</h2>
+        <h2 id="written">Written</h2>
+        <h3 id="overview-2">Overview</h3>
         <div class="sourceCode" id="cb161"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="at">x?</span></span>
 <span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="at">x+?</span></span>
@@ -1227,13 +1285,13 @@
 <span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="at">x?{prefix ...}</span></span>
 <span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="at">x?{... infix ...}</span></span>
 <span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="at">x? is the same as x-?</span></span></code></pre></div>
-        <h1 id="sigils">Sigils</h1>
-        <h1 id="order-of-operations">Order of operations</h1>
-        <h1 id="type-checking">Type checking</h1>
-        <h1 id="symbol-resolution">Symbol Resolution</h1>
-        <h1 id="encoded-as">Encoded As</h1>
-        <h1 id="viewed-as">Viewed As</h1>
-        <h1 id="fx-y-z-interpretation">f(x, y, z) interpretation</h1>
+        <h2 id="sigils">Sigils</h2>
+        <h2 id="order-of-operations">Order of operations</h2>
+        <h2 id="type-checking">Type checking</h2>
+        <h2 id="symbol-resolution">Symbol Resolution</h2>
+        <h2 id="encoded-as">Encoded As</h2>
+        <h2 id="viewed-as">Viewed As</h2>
+        <h2 id="fx-y-z-interpretation">f(x, y, z) interpretation</h2>
         <p>The following all mean the same:</p>
         <div class="sourceCode" id="cb162"><pre
         class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="at">X := (x, y)</span></span>
@@ -1244,7 +1302,7 @@
         with common math usage. Note: this only works for function
         calls. That is <code>\foo{(x, y)}</code> and
         <code>\foo{x, y}</code> are <strong>not</strong> the same.</p>
-        <h1 id="functions-and-operators">Functions and Operators</h1>
+        <h2 id="functions-and-operators">Functions and Operators</h2>
         <p>The forms <code>x * y</code> and <code>"*"(x, y)</code> are
         treated as the same. The same is true for <code>-x</code> and
         <code>"-"(x)</code> as well as <code>x!</code> and
@@ -1255,7 +1313,7 @@
         and <code>x-</code> should be changed, or an alias made to
         distinguish one form to another if <code>"-"(x)</code> needs to
         be used.</p>
-        <h1 id="symbol-resolution-1">Symbol Resolution</h1>
+        <h2 id="symbol-resolution-1">Symbol Resolution</h2>
     </div>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
