@@ -235,16 +235,9 @@ x + y
 
 ### Is Expression
 
-TODO: Update this so the right-hand-side is exactly one type (i.e. `\x & \y` is not supported)
-
 ```yaml
 x is \y
-```
-
-### Also Expression
-
-```yaml
-x also \a & \b
+x is \y & \z
 ```
 
 ### Equality
@@ -289,7 +282,7 @@ The consequence of this is that it is possible to write something like:
 
 ```yaml
 R := (X, +, *, 0, 1) is \commutative.ring
-R also \commutative.ring.with.identity
+R is \commutative.ring.with.identity
 ```
 
 The `\commutative.ring.with.identity` expects to be of the form `(X, +, *, 0, 1)` but `\commutative.ring` only needs to be of the form `(X, +, *, 0)`.  This is ok because the `(X, +, *, 0, 1)` is cast as `(X, +, *, 0)` and the `\commutative.ring` definition only sets the types of `X`, `+`, `*`, and `0`.
@@ -334,7 +327,7 @@ A signature is a type without any types for the inputs specified.
 ### Type Builtin
 
 ```yaml
-\\type{\:set + \:group & \:ring}
+\\type{\:set & \:group & \:ring}
 ```
 
 ### Formulation Builtin
