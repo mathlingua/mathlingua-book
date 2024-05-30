@@ -168,6 +168,11 @@ body {
   font-weight: bold;
 }
 
+.fu {
+  font-weight: bold;
+  color: #0070a1 !important;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   #mainContent {
