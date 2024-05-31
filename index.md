@@ -1,5 +1,5 @@
 
-<div id='#' style="text-align: center; color: #005cc5; font-size: 300%; margin-bottom: -1em;">
+<div id='mathlingua' style="text-align: center; color: #005cc5; font-size: 300%; margin-bottom: -1em;">
   Mathlingua
 </div>
 
