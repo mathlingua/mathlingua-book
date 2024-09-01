@@ -9,7 +9,20 @@
       style="margin-left: auto; margin-right: auto; height: 128px; width: 128px;" />
 </div>
 
-Mathlingua is a language specially designed to create encyclopedias of mathematical knowledge with the goal to make it *easier* to learn and understand mathematics, in particular to remove ambiguity, illustrate the relationship between mathematical concepts, and highlight aspects of definitions and theorems that are easy to overlook.
+Mathlingua is a language designed to record, share, and communicate mathematical knowledge with the goal to be more precise and easier to read and write than mathematics written in a natural languages.
+
+The main usage of Mathlingua is for the development of [mathlore.org](https://mathlore.org), a community developed collection of all mathematics described in the Mathlingua language.
+
+-------------------------------------------
+
+
+Mathlingua is a language specially designed to create [mathlore.org](https://mathlore.org), a collection of mathematical knowledge with the goal to make it *easier* to learn, communicate, and understand mathematics.  In particular to:
+* remove ambiguity
+* illustrate the relationship between mathematical concepts
+* highlight aspects of definitions and theorems that are easy to overlook
+* automatically identify some errors in definitions and theorems
+
+
 
 It is created to address the unique needs for recording mathematical knowledge, that include but are not limited to:
 
@@ -135,9 +148,13 @@ x!
 
 ### Conditional Sets
 
+TODO: Update this
+
 ```yaml
-{x | ...}
-{f(x, y) | ...}
+{x | s(x)... | p(x)}
+{x | s(x)...}
+{f(x, y) | s(x, y)... | p(x, y)}
+{f(x, y) | s(x, y)...}
 ```
 
 ### Functional Literal
@@ -149,8 +166,11 @@ x |-> f(x)
 
 ### Conditional Set Id Form
 
+TODO: update this
+
 ```yaml
-[x]{x | f(x)...}
+[x]{x | s(x)... | p(x)}
+[x]{x | s(x)}
 ```
 
 ### Colon Equals Form
@@ -191,8 +211,42 @@ x |-> x + 1
 
 ### Invisible Groupings
 
+TODO: update this to be (..)
+
 ```yaml
-(:x + y:)
+(.x + y.)
+```
+
+### Substitution 
+
+TODO: add this
+
+
+```yaml
+(x + y)[|x := 0; y := a|]
+(x + y * z)[|x:= 1; ? := 0|]
+(x, y)[| x := 0 |]
+```
+
+### Encoding Cast
+
+TODO: add this
+
+```yaml
+{:x:}
+```
+
+### Symbols
+
+TODO: add this
+
+```yaml
+$x
+$x, $y
+[$x] in [a, b]
+[$x, $y] in [a, b]
+$x...
+[$x...] in [a...]
 ```
 
 ### Conditional Set Expression
@@ -200,19 +254,22 @@ x |-> x + 1
 TODO: update this to use the second |
 
 ```yaml
-[x]{(x, x+1) | x is \real ; x > 0}
+[x]{(x, x+1) | x is \real | x > 0}
 [x]{(x, x+1) | x is \real}
-[x, y]{x + y | x, y is \real ; x > 0 ; y > 0}
+[x, y]{x + y | x, y is \real | x > 0 \.and./ y > 0}
 ```
 
 ### Command Expressions
+
+TODO: update to use second |
+TODO: update this to not support @
 
 ```yaml
 \function:on{A}:to{B}
 \a.b.c{x, y}
 \a.b.c(x, y)
 \a.b.c[x, y]{x + y}
-\a.b.c[x, y]{x + y | x, y is \real ; x > 0 ; y < 0}
+\a.b.c[x, y]{x + y | x, y is \real | x > 0 \.and./ y < 0}
 ```
 
 ### Prefix Operator
@@ -249,6 +306,8 @@ x != y
 
 ### Extends Expression
 
+TODO: verify if this is actually needed
+
 ```yaml
 x extends \y
 ```
@@ -264,12 +323,12 @@ The `as` operator is used to cast a symbol to another type or another form.  The
 
 When processing `x as <form>` the type of `x` is used to determine if it has a view as the specified form.  If so, that description is used to convert to the form.  Otherwise, if x is a tuple and <form> is a tuple containing a subset of the items from x, then the cast is that tuple of the subset of the items (where <form> doesn't need to have elements in the same order as x).  Otherwise, the cast fails (for opaque symbols, functions, or sets).
 
-When processing 	`x as \:<type>` the type of `x` is used to determine if `x` can be cast as the specified type.
+When processing `x as \:<type>` the type of `x` is used to determine if `x` can be cast as the specified type.
 
 Note: The `as` operator can be used twice to convert to another type so that the form can also be changed.
 
 ```yaml
-x as \:function as [a,b]{(a,b)|...}
+x as \:function as [a,b]{(a,b)| s(a, b)...}
 ```
 
 #### Implicit Conversions
@@ -310,6 +369,8 @@ x[i[k]]
 
 A signature is a type without any types for the inputs specified.
 
+TODO: update this to use symbols
+
 ```yaml
 \:a.b.c:d:e
 ```
@@ -317,7 +378,7 @@ A signature is a type without any types for the inputs specified.
 ### Types
 
 ```yaml
-\:a.b.c:x{\x + \:a & \:b, \:c}:y{\:d}
+\:a.b.c:x{\x & \:a & \:b, \:c}:y{\:d}
 \:continuous.function:on{\:set}:to{\:set}
 \:continuous.function:on{?}:to{?}
 (\:set & \:group) \:to:/ \:set
@@ -400,27 +461,12 @@ x [.in.]: y :-> x; y
 
 ### Enclosed Non-command Operator
 
-TODO: Do not allow the form (. .)
-
-TODO: Disallow the forms:
-```
-[.in.]
-:[.in.]
-```
-
-Aliases `is` statements
+TODO: update this to only use [. .] form and not {. .} form
 
 ```yaml
 [.x.]:
-```
-
-Aliases expressions
-
-```yaml
-{.x.}:
-:{.x.}
-
-{.x.}
+[.x.]
+:[.x.]
 ```
 
 ### Non-enclosed Non-command Operator
@@ -434,16 +480,17 @@ Aliases expressions
 
 ### Infix Command Expression
 
-TODO: do not allow the form \( )/
+TODO: update this to use the form \.x./ and not \{x}/ or \[x]/
 
 ```yaml
-\{function:on{A}:to{B}}/
-\[function:on{A}:to{B}]/
+\.function:on{A}:to{B}./
 ```
 
 ## Ids
 
 ### Command Id
+
+TODO: update this to no longer use @
 
 ```yaml
 \function:on{A}:to{B}
@@ -471,14 +518,15 @@ x + y
 
 ### Infix Command Operator Id
 
-TODO: Do not allow the form \( )/
+TODO: update this to only allow \.x./ form and not \{x}/ or \[x]/
 
 ```yaml
-A \{subset}/ B
-A \[subset]/ B
+A \.subset./ B
 ```
 
 ### Variadic
+
+TODO: update this to include symbols
 
 ```yaml
 x...
@@ -500,6 +548,22 @@ x... extends \a
 ```
 
 TODO: specify what `x... = y...` means.  In particular, `(a, b, c) = (x, y, z)` defaults to `a = x` and `b = y` and `c = z`.
+
+TODO: Specify that `(x...) := (a, b, c)` has `(x...)` interpreted as a tuple and it is different from `x... := a...` which assigns each on the left to each on the right.
+
+TODO: specify that in `f(x...)` or `\sin(x...)` (i.e. where parens are used) the `(x...)` is the same as `((x...))` where `(x...)` is interpreted as a tuple.  On the other hand, in curly parens such as `\f{x...}` the `x...` is interpreted as a variable number of parameters and not a tuple.
+
+## :=: expression
+
+TODO: add this
+
+```yaml
+f(x...) :=: f((x...))
+f(x, y) :=: f((x, y))
+f(x, (y, z)) :=: f((x, y, z))
+f(x, y, z) :=: f(x, (y, z))
+f(x...) :=: f((x...)) := y
+```
 
 ## Structural Language
 
@@ -608,7 +672,39 @@ suchThat?: <Clause>+
 then: <Clause>+
 ```
 
+### Inductively
+
+```yaml
+inductively:
+oneOf: <InducivelyCase>+
+```
+
+InductivelyCase:
+
+```yaml
+case: <... := ...>
+using?: <Target>+
+```
+
+### Matching
+
+```yaml
+matching: <Target>
+as?: <Type>
+against: <MatchingCase>+
+```
+
+MatchingCase:
+
+```
+case: <... := ...>
+using?: <Target>+
+then: <Clause>
+```
+
 ### Definitions
+
+TODO: determine if this is needed
 
 ```yaml
 Captures: <Formulation>+
@@ -619,13 +715,16 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
+TODO: update this to use `specifies:` and `expressing:`
+
 ```yaml
 Defines: <Target>
 using?: <Target>+
 when?: <Spec>+
 suchThat?: <Clause>+
 means?/equivalentTo: <Spec>+
-expresses?: <Clause>+
+specifies?: <Spec>+
+expressing?: <Clause>+
 Provides?: <ProvidesKind>+
 Justified?: <JustifiedKind>+
 Documented?: <DocumentedKind>+
@@ -634,6 +733,8 @@ Aliases?: <Alias>+
 Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
+
+TODO: update this to use `specifies:` and `satisfying:`
 
 ```yaml
 Describes: <Target>
@@ -641,7 +742,8 @@ using?: <Target>+
 when?: <Spec>+
 suchThat?: <Clause>+
 extends?/equivalentTo: <Spec>+
-specifies?: <Clause>+
+specifies?: <Spec>+
+satisfying?: <Clause>+
 Provides?: <ProvidesKind>+
 Justified?: <JustifiedKind>+
 Documented?: <DocumentedKind>+
@@ -651,12 +753,15 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
+TODO: update this to use `specifies:`  and at lease one of `specifies:` or `that:` must be specified
+
 ```yaml
 States:
 using?: <Target>+
 when?: <Spec>+
 suchThat?: <Clause>+
-that: <Clause>+
+specifies?: <Spec>+
+that?: <Clause>+
 Justified?: <JustifiedKind>+
 Documented?: <DocumentedKind>+
 References?: <Text>+
@@ -923,7 +1028,7 @@ written: <Text>+
 called: <Text>+
 ```
 
-TODO: specify that writing: excepts a text of the form "... as ..."
+TODO: specify that writing: excepts a text of the form "... :~> ..."
 
 ```yaml
 writing: <Text>+
@@ -931,8 +1036,11 @@ writing: <Text>+
 
 ### Provides
 
+TODO: add tracks section and confirm its name
+
 ```yaml
 symbol: <Alias>
+tracks?: <Formulation>
 replaces?: <Formulation>
 written?: <Text>+
 ```
@@ -1012,6 +1120,7 @@ ProofItemKind ::= block:
                 | contradiction:
                 | done:
                 | qed:
+                | matching:
 ```
 
 ```yaml
@@ -1051,6 +1160,26 @@ forInduction: <ProofItemKind>+
 
 ```yaml
 forContrapositive: <ProofItemKind>+
+```
+
+#### Inductive
+
+### Matching
+
+TODO: add support for this
+
+```yaml
+matching: <Target>
+as?: <Type>
+against: <ProofMatchingCase>+
+```
+
+ProofMatchingCase:
+
+```
+case: <... := ...>
+using?: <Target>+
+then: <ProofItemKind>
 ```
 
 #### Introductory Constructs
@@ -1210,12 +1339,14 @@ qed:
 
 ### Declaring
 
+TODO: update this to use {..}
+
 ```yaml
-'{:{: x + 1 :}(1) + y:}(some.label)'
+'{.{.x + 1.}(1) + y.}(some.label)'
 ```
 
 ```yaml
-'{:x+1:}(1)'
+'{.x+1.}(1)'
 ```
 
 can be written as
@@ -1249,10 +1380,13 @@ In addition to the following, the `\\definition:of:satisfies` builtin can be use
 
 ### Overview
 
+TODO: update this to use :~> and to support symbols
+
 ```yaml
-"target as latex"
-"epsilon as \varepsilon"
-"a(i) as a?_{i?}"
+"target :~> latex"
+"epsilon :~> \varepsilon"
+"a(i) :~> a?_{i?}"
+"Delta$x :~> \Delta_{$x}"
 ```
 writing: uses the same replacement rules as written:
 
@@ -1285,7 +1419,16 @@ x? is the same as x-?
 
 ## f(x, y, z) interpretation
 
+TODO: update this to describe :=:
+
+TODO: update this to properly describe varargs.  ie f(x...) in a definition means the definition auto interprets multiple args as a tuple while f(x) expects one arg (that could be a tuple) and f((x...)) expects a tuple of potentially multiple items, f(x, y) expects two items and f((x, y)) expects one tuple with two items
+
+f(...(x, y))
+f(...x)
+
+
 The following all mean the same:
+
 ```yaml
 X := (x, y)
 f(X)
@@ -1298,6 +1441,69 @@ that is the tuple is automatically collapsed.  This aligns with common math usag
 
 The forms `x * y` and `"*"(x, y)` are treated as the same.  The same is true for `-x` and `"-"(x)` as well as `x!` and `"!"(x)`.
 
-This means if `-x` and `x-` are both operators in scope then the form `"-"(x)` cannot be used since it is ambiguous.  In this case, one of `-x` and `x-` should be changed, or an alias made to distinguish one form to another if `"-"(x)` needs to be used.
+This means if `-x` and `x-` are both operators in scope then the form `"-"(x)` cannot be used since it is ambiguous.  In this case , one of `-x` and `x-` should be changed, or an alias made to distinguish one form to another if `"-"(x)` needs to be used.
 
 ## Symbol Resolution
+
+### TODO
+
+The next section is out of date TODO update it to describe the use of the tracks: section. 
+
+Update `*` to use `"*"` which means the `x "*" y` is dynamic.  That is, if `G := (Y, +, 0) is \group'` then `x * y` is not available but `x + y` is.
+
+```
+[\group]
+Describes: G := (X, *, e)
+Provides:
+. 'x [.in.]: G :-> x is \element.of:set{G}'
+
+
+[\element.of:{G}]
+Describes: x
+when: 'G is \group'
+Provides:
+. 'x "*" y :=> x [.G."x".] y'
+```
+
+Add support for `#some.theorem`, `#!some.axiom` and `#?some.conjecture`.
+
+TODO: add support for `\?command` and `\?operator?/`
+
+TODO: add the Legend: or Write: group and finalize its name
+
+# Variadic Arguments and Automatic Tuple Creation
+
+TODO: Update logic for varargs and auto-tuple creation
+
+The `...x` syntax is used to specify that the tuple described by `x` should be flattened out.  So if `z := (x, y)` then `f(...z)` means `f(x, y)`.
+
+In a function definition the prefix `...` is used to specify that a tuple is automatically un-flattened.  That is `f(x, y)` is interpreted as `f((x,y))`.  Specifically:
+
+TODO: update this to describe :=: instead of ...x which is not used anymore
+
+
+```yaml
+f(x) means f takes one argument x
+f((x...)) means f takes one argument that is a tuple with any number of args
+f(...(x...)) means f takes one tuple argument with any number of args
+             but f(x,y,z) is interpreted as f((x,y,z))
+             Note: the ...x syntax can only be used for tuples
+                   so f(...x) or f(...g(x)) are not valid.
+f(x, y) means f takes exactly two arguments x and y
+f((x, y)) means f takes one argument which is a tuple with two arguments
+f(...(x, y)) means f takes one argument which is a tuple with two arguments
+             but f(x, y) is interpreted as f((x, y))
+f(x...) means f takes any number of arguments
+        (they are not interpreted as a tuple)
+        Instead, f(...(x...)) specifies x takes any number of arguments
+        that should be interpreted as a tuple
+f(g(x)...) means f takes any number of arguments that are all of the
+           shape g(x)
+           g(x)[i] references the ith one
+f((x,y)...) means f takes any number of arguments that are all tuples
+            of the form (x, y) where (x, y)[i] references the ith one
+etc.
+```
+
+
+If a definition or describes states the shape of the thing being defined is of the form `f(...(x...))` then `f(x)` is interpreted in a couple ways.  If `x` is a tuple then it is then input to `f` otherwise if it is not, then it is interpreted as a tuple with one element.
