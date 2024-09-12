@@ -1507,3 +1507,18 @@ etc.
 
 
 If a definition or describes states the shape of the thing being defined is of the form `f(...(x...))` then `f(x)` is interpreted in a couple ways.  If `x` is a tuple then it is then input to `f` otherwise if it is not, then it is interpreted as a tuple with one element.
+
+
+-----
+
+```yaml
+ =
+!=
+:=
+:=>
+:=:
+:-
+:->
+:~>
+```
+
