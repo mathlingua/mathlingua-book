@@ -1,5 +1,5 @@
 
-<div id='mathlingua' style="text-align: center; color: #005cc5; font-size: 300%; margin-bottom: -1em;">
+<div id='mathlingua' style="text-align: center; color: #005cc5; font-size: 300%; margin-bottom: 0em;">
   Mathlingua
 </div>
 
@@ -386,6 +386,8 @@ TODO: update this to use symbols
 ```
 
 ### Type Builtin
+
+TODO: Remove this and instead have it be just `\\type` so one can write `T is \\type` to signify an argument is a type.  Also, double check that this is approach makes sense.
 
 ```yaml
 \\type{\:set & \:group & \:ring}
@@ -1522,3 +1524,15 @@ If a definition or describes states the shape of the thing being defined is of t
 :~>
 ```
 
+# TODO
+
+* document what `:=:` is an how it works
+* document and implement
+```yaml
+Provides:
+. comparison: "\function:on{A}:to{B} is \function:on{X}:to{Y}"
+  provided:
+  . "X is A"
+  . "B is Y"
+```
+that allows one to specify if a type is covariant, contravariant, or requires strict equality of types.  The provided can be of the form `X is A` or `X = A` where `X = A` means `X is A` and `A is X`.
