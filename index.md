@@ -151,10 +151,10 @@ x!
 TODO: Update this
 
 ```yaml
-{x | s(x)... | p(x)}
-{x | s(x)...}
-{f(x, y) | s(x, y)... | p(x, y)}
-{f(x, y) | s(x, y)...}
+{x : s(x)... | p(x)}
+{x : s(x)...}
+{f(x, y) : s(x, y)... | p(x, y)}
+{f(x, y) : s(x, y)...}
 ```
 
 ### Functional Literal
@@ -169,8 +169,9 @@ x |-> f(x)
 TODO: update this
 
 ```yaml
-[x]{x | s(x)... | p(x)}
-[x]{x | s(x)}
+[x]{x : s(x)... | p(x)}
+[x]{x : s(x)}
+[x]{x | p(x)}
 ```
 
 ### Colon Equals Form
@@ -243,10 +244,10 @@ TODO: add this
 ```yaml
 $x
 $x, $y
-[$x] in [a, b]
-[$x, $y] in [a, b]
+[$x] from [a, b]
+[$x, $y] from [a, b]
 $x...
-[$x...] in [a...]
+[$x...] from [a...]
 ```
 
 ### Conditional Set Expression
@@ -254,9 +255,9 @@ $x...
 TODO: update this to use the second |
 
 ```yaml
-[x]{(x, x+1) | x is \real | x > 0}
-[x]{(x, x+1) | x is \real}
-[x, y]{x + y | x, y is \real | x > 0 \.and./ y > 0}
+[x]{(x, x+1) : x is \real | x > 0}
+[x]{(x, x+1) : x is \real}
+[x, y]{x + y : x, y is \real | x > 0 \.and./ y > 0}
 ```
 
 ### Command Expressions
@@ -269,7 +270,7 @@ TODO: update this to not support @
 \a.b.c{x, y}
 \a.b.c(x, y)
 \a.b.c[x, y]{x + y}
-\a.b.c[x, y]{x + y | x, y is \real | x > 0 \.and./ y < 0}
+\a.b.c[x, y]{x + y : x, y is \real | x > 0 \.and./ y < 0}
 ```
 
 ### Prefix Operator
@@ -306,7 +307,7 @@ x != y
 
 ### Extends Expression
 
-TODO: verify if this is actually needed
+TODO: verify if this is actually needed.  Update: This is not needed because `\\abstract` is used instead.
 
 ```yaml
 x extends \y
@@ -328,7 +329,7 @@ When processing `x as \:<type>` the type of `x` is used to determine if `x` can 
 Note: The `as` operator can be used twice to convert to another type so that the form can also be changed.
 
 ```yaml
-x as \:function as [a,b]{(a,b)| s(a, b)...}
+x as \:function as [a,b]{(a,b) : s(a, b)...}
 ```
 
 #### Implicit Conversions
@@ -346,11 +347,33 @@ R is \commutative.ring.with.identity
 
 The `\commutative.ring.with.identity` expects to be of the form `(X, +, *, 0, 1)` but `\commutative.ring` only needs to be of the form `(X, +, *, 0)`.  This is ok because the `(X, +, *, 0, 1)` is cast as `(X, +, *, 0)` and the `\commutative.ring` definition only sets the types of `X`, `+`, `*`, and `0`.
 
+### Ordinal Id Expression
+
+TODO: ADD THIS
+
+```yaml
+x{i := 1...}
+x{i := 1...n}
+x{(i,j) := (1,1)...}
+x{(i,j) := (1,1)...(m,n)}
+```
+
 ### Ordinal Call Expression
 
 ```yaml
-x[1]
-x[i[k]]
+x{i}
+x{1}
+```
+
+### Ordinal Slice Expression
+
+TODO: ADD THIS
+
+```yaml
+x{1...n}
+x{2...n}
+x{1...(n-1)}
+x{2...(n-1)}
 ```
 
 ### Chain Expression
@@ -395,6 +418,8 @@ TODO: Remove this and instead have it be just `\\type` so one can write `T is \\
 
 ### Formulation Builtin
 
+TODO: Remove this.  Since sets have the form `{x : y | z}` only `\\expression`, `\\statement` and `\\specification` are needed.  (one doesn't need to OR them).
+
 ```yaml
 \\formulation{expression | statement}
 ```
@@ -407,6 +432,8 @@ TODO: Remove this and instead have it be just `\\type` so one can write `T is \\
 
 ### Boolean Value Builtin
 
+TODO: Remove this and instead for a statement `P` saying `if: P` means if `P` is true.
+
 ```yaml
 \\true
 \\false
@@ -414,17 +441,31 @@ TODO: Remove this and instead have it be just `\\type` so one can write `T is \\
 
 ### Type-of Builtin
 
+TODO: Determine if this is needed because of dependent typing
+
 ```yaml
 \\type:of{x}
 ```
 
+### Abstract Builtin
+
+TODO: Add this
+
+```
+\\abstract
+```
+
 ### Map Builtin
+
+TODO: REMOVE THIS
 
 ```yaml
 \\map{x[i]}:to{x[i] + 1}
 ```
 
 ### Map Else Builtin
+
+TODO: REMOVE THIS
 
 ```yaml
 \\map{x[i[k]]}:to{x[i[k]] + 1}:else{0}
@@ -588,6 +629,7 @@ Clause ::= <Text>
          | when:
          | piecewise:
          | declare:
+         | asserting:
 ```
 
 ### Clauses
@@ -674,6 +716,14 @@ suchThat?: <Clause>+
 then: <Clause>+
 ```
 
+TODO: Add this
+
+```
+asserting: 'a == b'
+by?/because?: <ProofItem>+
+then: <Spec+>
+```
+
 ### Inductively
 
 ```yaml
@@ -717,7 +767,7 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
-TODO: update this to use `specifies:` and `expressing:`
+TODO: update this to use `specifies:` and `expresses:`
 
 ```yaml
 Defines: <Target>
@@ -726,7 +776,7 @@ when?: <Spec>+
 suchThat?: <Clause>+
 means?/equivalentTo: <Spec>+
 specifies?: <Spec>+
-expressing?: <Clause>+
+expresses?: <Clause>+
 Provides?: <ProvidesKind>+
 Justified?: <JustifiedKind>+
 Documented?: <DocumentedKind>+
@@ -736,7 +786,7 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
-TODO: update this to use `specifies:` and `satisfying:`
+TODO: update this to use `specifies:` and `satisfies:`
 
 ```yaml
 Describes: <Target>
@@ -745,7 +795,7 @@ when?: <Spec>+
 suchThat?: <Clause>+
 extends?/equivalentTo: <Spec>+
 specifies?: <Spec>+
-satisfying?: <Clause>+
+satisfies?: <Clause>+
 Provides?: <ProvidesKind>+
 Justified?: <JustifiedKind>+
 Documented?: <DocumentedKind>+
@@ -755,7 +805,7 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
-TODO: update this to use `specifies:`  and at lease one of `specifies:` or `that:` must be specified
+TODO: update this to use `specifies:`  and at lease one of `specifies:` or `that:` must be specified.
 
 ```yaml
 States:
@@ -777,6 +827,7 @@ Id?: <IdTextItem>
 ```yaml
 Axiom:
 given?: <Target>+
+declaring?: <Target>+
 using?: <Target>+
 where?: <Spec>+
 suchThat?: <Clause>+
@@ -793,6 +844,7 @@ Id?: <IdTextItem>
 ```yaml
 Conjecture:
 given?: <Target>+
+declaring?: <Target>+
 using?: <Target>+
 where?: <Spec>+
 suchThat?: <Clause>+
@@ -810,6 +862,7 @@ Id?: <IdTextItem>
 Corollary:
 to: <Text>+
 given?: <Target>+
+declaring?: <Target>+
 using?: <Target>+
 where?: <Spec>+
 suchThat?: <Clause>+
@@ -828,6 +881,7 @@ Id?: <IdTextItem>
 Lemma:
 for: <Text>+
 given?: <Target>+
+declaring?: <Target>+
 using?: <Target>+
 where?: <Spec>+
 suchThat?: <Clause>+
@@ -845,6 +899,7 @@ Id?: <IdTextItem>
 ```yaml
 Theorem:
 given?: <Target>+
+declaring?: <Target>+
 using?: <Target>+
 where?: <Spec>+
 suchThat?: <Clause>+
@@ -1038,7 +1093,15 @@ writing: <Text>+
 
 ### Provides
 
-TODO: add tracks section and confirm its name
+TODO: UPDATE THIS SO TRACKS USES `*?` for example for the operator
+TODO: UPDATE THE NAME OF THIS AND SUPPORT THINGS OF THE FORM
+* `R(x)`
+* `X.f(x)`
+* `X.f{x}`
+* `X.f[x]{y}`
+* `X.f[x]{y : z}`
+* `X.f[x]{y | z}`
+* `X.f[x]{y : z | w}`
 
 ```yaml
 symbol: <Alias>
@@ -1451,7 +1514,7 @@ This means if `-x` and `x-` are both operators in scope then the form `"-"(x)` c
 
 The next section is out of date TODO update it to describe the use of the tracks: section. 
 
-Update `*` to use `"*"` which means the `x "*" y` is dynamic.  That is, if `G := (Y, +, 0) is \group'` then `x * y` is not available but `x + y` is.
+Update `*` to use `*?` which means the `x *? y` is dynamic.  That is, if `G := (Y, +, 0) is \group'` then `x * y` is not available but `x + y` is.
 
 ```
 [\group]
@@ -1464,7 +1527,7 @@ Provides:
 Describes: x
 when: 'G is \group'
 Provides:
-. 'x "*" y :=> x [.G."x".] y'
+. 'x *? y :=> x [.G.*?.] y'
 ```
 
 Add support for `#some.theorem`, `#!some.axiom` and `#?some.conjecture`.
@@ -1522,6 +1585,7 @@ If a definition or describes states the shape of the thing being defined is of t
 :-
 :->
 :~>
+==
 ```
 
 # TODO
@@ -1536,3 +1600,66 @@ Provides:
   . "B is Y"
 ```
 that allows one to specify if a type is covariant, contravariant, or requires strict equality of types.  The provided can be of the form `X is A` or `X = A` where `X = A` means `X is A` and `A is X`.
+
+Also, one can have tuples on the right hand side of the `is`.  For example, in a definition of `\R2` one could have:
+
+```yaml
+[\R2]
+Describes: (x, y)
+...
+Provides:
+. comparison: "(x, y) is \R2"
+  provided:
+  . "x, y is \real"
+```
+
+This allows one to use `f((x,y))` where `x,y is \real` instead of `f(x, y)` if the function is defined to support `f(x...) :=: f((x...))`.
+
+
+---------------------------------------------------------
+
+
+```
+
+
+\matrix{1, 2, 3}
+       {4, 5, 6}
+
+\R{3}
+
+x [.in.]: \R{n}
+
+\matrix{x{(i,j)...(m,n)}}
+\vector{x{i...n}}
+
+\real.vector{1, 2, 3}
+
+\integral[x]{f[x]}:d{$x}
+\integral[x,y]{f[x,y]}:d{$x, $y}
+\integral[x,y]{f[x,y]}:d{$y, $x}
+\integral[x,y]{f[x,y]}:d{$x}
+\integral[x,y]{f[x,y]}:d{$x}
+
+
+\integral[u,v]{u^2 + v^2}:d{$u}
+
+\definite.riemann.integral[x]{\sin(x) + \sin2(x)}:d{$x}:from{0}:to{1}
+
+\int[x]{f[x]}:on{a, b} :=>
+  \definite.riemann.integral[x]{f[x]}:d{$x}:from{a}:to{b}
+
+\int[u]{\sin(u)}:on{0, \pi}
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
