@@ -15,6 +15,9 @@
 * The positiveInt symbols support using 1,2,... as starting indices and `-` to subtract from ending indices.  So one can write `x{1...(n-1)}` or `x{2...n}`.  This is used, for example to recursively define `\real.sum:of{x{i := 1...n}}`.
 * Variadic symbols do not support nesting.  That is, `x{i{j}}` is not supported.  This is because I don't see a strong use case for this, but will reconsider in the future if one comes up.
 * Double check this, but perhaps a positiveInt symbol can only be used in a `matching` construct and not an `if:then:else` construct since positiveInts are special symbols that the system knows has arithmetic.
+* A signature takes into account the number of arguments and whether a group is curly parens, round parens, or uses square parens.  Also, `[]{}` forms cannot appear by themselves in expressions.  Thus `\f[x]{x + 1}` and `\g[x]{x : x is \real}` are possible but `\f{x |-> x + 1}` and `\g{[x]{x : x is \real}}` is not allowed.  Thus signatures are of the form `\a.b.c{2}:x{3}:y[2]{:}:z[2]{:|}:w[2]{|}:a[2]{-}` where `[]{:|}` describes a `[]{x : x | x}` form `[]{:}` describes a `[]{x : x}` form `[]{|}` describes a `[]{x | x}` form and `[]{-}` describes a `[x]{x}` form.
+* `"..."` is used for shortcuts for example `"ra" == "real.analysis"`.  Then one can write `\"ra".continuous.function` instead of `\real.analysis.continuous.function`.  Note that if one writes `\"a.b.c"` that is the equivalent of `\"a"."b"."c"`.
+
 
 
 

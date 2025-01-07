@@ -212,8 +212,6 @@ x |-> x + 1
 
 ### Invisible Groupings
 
-TODO: update this to be (..)
-
 ```yaml
 (.x + y.)
 ```
@@ -243,11 +241,16 @@ TODO: add this
 
 ```yaml
 $x
-$x, $y
-[$x] from [a, b]
-[$x, $y] from [a, b]
 $x...
-[$x...] from [a...]
+$x{i := 1...n}
+$x{j}
+$x{j...}
+$x{j{k := 1...m}}
+$[x in a, b]
+$[y in x...]
+$[x{j} in x...]
+$[x{j...} in x...]
+$[x{j{k := 1...m}} in x...]
 ```
 
 ### Conditional Set Expression
@@ -382,10 +385,11 @@ x{2...(n-1)}
 (x + y).z.a.b
 ```
 
-### Select From Builtin
+### Expression Form
 
 ```yaml
-\\select{statement|specification}:from{x}
+f[x]
+f[x, y]
 ```
 
 ### Signatures
@@ -416,43 +420,14 @@ TODO: Remove this and instead have it be just `\\type` so one can write `T is \\
 \\type{\:set & \:group & \:ring}
 ```
 
-### Formulation Builtin
-
-TODO: Remove this.  Since sets have the form `{x : y | z}` only `\\expression`, `\\statement` and `\\specification` are needed.  (one doesn't need to OR them).
+### Formulation Builtins
 
 ```yaml
-\\formulation{expression | statement}
-```
-
-### Boolean Builtin
-
-```yaml
-\\boolean
-```
-
-### Boolean Value Builtin
-
-TODO: Remove this and instead for a statement `P` saying `if: P` means if `P` is true.
-
-```yaml
-\\true
-\\false
-```
-
-### Type-of Builtin
-
-TODO: Determine if this is needed because of dependent typing
-
-```yaml
-\\type:of{x}
-```
-
-### Abstract Builtin
-
-TODO: Add this
-
-```
-\\abstract
+\\abstrat
+\\specification
+\\statement
+\\expression
+\\type
 ```
 
 ### Map Builtin
@@ -756,7 +731,7 @@ then: <Clause>
 
 ### Definitions
 
-TODO: determine if this is needed
+TODO: remove this
 
 ```yaml
 Captures: <Formulation>+
@@ -766,8 +741,6 @@ References?: <Text>+
 Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
-
-TODO: update this to use `specifies:` and `expresses:`
 
 ```yaml
 Defines: <Target>
@@ -786,8 +759,6 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
-TODO: update this to use `specifies:` and `satisfies:`
-
 ```yaml
 Describes: <Target>
 using?: <Target>+
@@ -805,7 +776,48 @@ Writing?: <WritingTextItem>+
 Id?: <IdTextItem>
 ```
 
-TODO: update this to use `specifies:`  and at lease one of `specifies:` or `that:` must be specified.
+TODO: add this
+
+```yaml
+[Id]
+Requires: <Target>
+using?: <Target>+
+when?: <Spec>+
+suchThat?: <Clause>+
+provides: <capability>+
+Documented?: <DocumentedKind>+
+References?: <Text>+
+Aliases?: <Alias>+
+Writing?: <WritingTextItem>+
+Id?: <IdTextItem>
+```
+
+```yaml
+capability: <Formulation>
+where?: <Spec>+
+written: <Text>+
+```
+
+Example:
+
+```yaml
+
+[\with.addition]
+Requires: x
+provides:
+. capability: 'x + y'
+  written: "x+? + y+?"
+Id: "..."
+
+
+[\sum:of{a, b}]
+Defines: c
+when: 'a, b is \with.addition'
+expresses: 'c := a + b'
+Id: "..."
+```
+
+TODO: update this to so at lease one of `specifies:` or `that:` must be specified.
 
 ```yaml
 States:
@@ -1657,9 +1669,128 @@ x [.in.]: \R{n}
 ```
 
 
+```yaml
+$(t in x,y)
+$[t in x,y]
+${t in x,y}
+
+f(x...)[| for $a in $x... then $a := "$(a)0"; $t := 0 |]
+
+\d[x, y, z]{f[x, y, z]}:d{$x}:at{x0, y0, z0}]
+...
+expresses:
+. 'f(x0 + DeltaX, y0, z0) - f(x0, y0, z0)'
 
 
+\d[x, y, z]{f[x, y, z]}:d{$y}:at{x0, y0, z0}]
+...
+expresses:
+. 'f(x0, y0 + DeltaY, z0) - f(x0, y0, z0)'
 
 
+[\d[x{i := 1...n}]{f[x{i := 1...n}}]:d{$[x{j} with j := 1...n]}:at{xo{i := 1...n}}]
+Defines: dfdt
+expresses:
+. 'f(x...)[| \\foreach{i}:then{x{i} := x0{i}}:else{x{j} := x0{j} + "Delta${j}"} |]'
+. 'f(x...)[| x{i} := x0{i}; x{j} := x0{j} + "Delta${x{j}}" |]'
 
+
+[\d[x{i := 1...n}]{f[x{i := 1...n}}]:d{$[t in x...]}:at{xo{i := 1...n}}]
+
+f(x...)[| x{i} := x0{i}; $t := 1 |]
+
+
+x{1...n}
+x{2...n}
+x{1...(n-1)}
+x{2...(n-1)}
+
+
+```
+
+```yaml
+
+[#real.analysis]
+Topic:
+within: "#analysis"
+description: "..."
+collects:
+. '\integral[x]{f[x]}:d{$x} :=> \real.indefinite.integral[x]{f[x]}:d{$x}'
+. '\d[x]{f[x]}:d{$x} :=> \derivative:of[x]{f[x]}:wrt{$x}'
+Id: "..."
+
+
+Use:
+Aliases:
+. 'ra := "#real.analysis"'
+. 'calc := "#calculus"'
+. '\foo{x} :=> \bar{x}'
+Writing:
+. "\a :~> \alpha"
+. "\D$[x] :~> \Delta$[x]"
+
+
+Write:
+. "\a :~> \alpha"
+Id: "..."
+
+
+Theorem:
+...
+Aliases:
+. 'ra := "#real.analysis"'
+. '\foo{x} :=> \bar{x}'
+
+
+\"#real.analysis"::integral[x]{x^2 + 1}:d{$x}
+\ra::integral[x]{x^2 + 1}:d{$x}
+
+\calc::integral[x]{x^2 + 1}:d{$x}
+\calc::integral[x]{x^2 + \sin(a*x)}:d{$x}
+
+
+```
+
+
+```yaml
+
+\real.analysis.continuous.function:on{A}:to{B}
+
+Use:
+. "ra <=> real.analysis"
+. "t <=> topologicial"
+. "ch <=> cauchy"
+. "seq <=> sequence"
+
+\(ra).(cont).(func):on{A}:to{B}
+\"ra"."cont"."func":on{A}:to{B}
+\"ra".continuous.function:on{A}:to{B}
+\<ra>.continuous.function:on{A}:to{B}
+\`ra`.continuous.function:on{A}:to{B}
+\ra?.continuous.function:on{A}:to{B}
+\`ra`.continuous:function:on{A}:to{B}
+
+\topological.continuous.function:on{A}:to{B}
+\topological.cauchy.sequence:over{T}
+
+\"t".continuous.function:on{A}:to{B}
+\"t".cauchy.sequence:over{T}
+
+\"t"."ch"."seq":over{T}
+
+\"r".continuous.function:on{A}:to{B}
+
+\"r".integral[x]{x^2 + 1}:d{$x}
+
+```
+
+```
+[\abelian.group]
+Describes: G
+extends: 'G is \group'
+satisfies:
+. forAll: x, y
+  where: 'x, y [.in.]: G'
+  then: 'x * y = y * x'
+```
 
